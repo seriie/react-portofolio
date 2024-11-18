@@ -1,0 +1,45 @@
+{
+    "lang": {
+        "name": "Bahasa Indonesia",
+        "code": "ind_ID"
+    },
+    "about": {
+        "title": "Tentang Saya",
+        "ima": "Saya seorang",
+        "focusat": "berfokus pada pengembangan aplikasi modern menggunakan",
+        "more": "dan berbagai teknologi web lainnya. Saya memiliki pengalaman dalam membangun aplikasi e-commerce, eksperimen keamanan siber, dan berbagai proyek lainnya.",
+        "react": "Membangun aplikasi web interaktif dan responsif dengan",
+        "tailwind": "Mengimplementasikan desain modern dengan",
+        "mysql": {
+            "first": "Membangun aplikasi berbasis data menggunakan",
+            "last": "dan API backend"
+        },
+        "cyber": "Melakukan eksperimen keamanan siber untuk meningkatkan performa aplikasi."
+    },
+    "myskills": {
+        "title": "Keahlian Saya"
+    },
+    "project": {
+        "title": "Proyek Saya",
+        "onetap": {
+            "title": "OneTap E-Commerce",
+            "description": "Website e-commerce modern tanpa fitur login/daftar, memberikan pengalaman pengguna yang mulus dan desain yang responsif."
+        },
+        "animeweb": {
+            "title": "Website Anime",
+            "description": "Website anime sederhana yang menampilkan daftar anime mendatang dan juga menambahkan fitur pencarian anime."
+        },
+        "mangaweb": {
+            "title": "Website Manga",
+            "description": "Website manga sederhana yang menyediakan fitur pencarian manga."
+        },
+        "visit": "Lihat Proyek"
+    },
+    "contact": {
+        "title": "Hubungi Saya",
+        "name": "Nama",
+        "email": "Email",
+        "message": "Pesan",
+        "send": "Kirim"
+    }
+}

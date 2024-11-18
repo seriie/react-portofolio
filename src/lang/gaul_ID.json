@@ -1,0 +1,45 @@
+{
+    "lang": {
+      "name": "Bahasa Gaul",
+      "code": "gaul_ID"
+    },
+    "about": {
+      "title": "Tentang Gue",
+      "ima": "Gue ini",
+      "focusat": "yang fokus bikin aplikasi kekinian pake",
+      "more": "dan teknologi web lainnya. Gue punya pengalaman bikin aplikasi e-commerce, eksperimen keamanan siber, dan berbagai proyek lainnya.",
+      "react": "Bikin aplikasi web interaktif dan responsif pake",
+      "tailwind": "Ngasih desain modern pake",
+      "mysql": {
+        "first": "Bikin aplikasi berbasis data pake",
+        "last": "dan API backend"
+      },
+      "cyber": "Nyoba eksperimen keamanan buat ningkatin performa aplikasi."
+    },
+    "myskills": {
+      "title": "Skill Gue"
+    },
+    "project": {
+      "title": "Proyek Gue",
+      "onetap": {
+        "title": "OneTap E-Commerce",
+        "description": "A modern e-commerce site ga pake login/register, gampang banget digunain plus desainnya keren abis."
+      },
+      "animeweb": {
+        "title": "Website Anime",
+        "description": "Website anime simple yang nampilin daftar anime yang bakal tayang plus fitur search anime."
+      },
+      "mangaweb": {
+        "title": "Website Manga",
+        "description": "Website manga simple yang nyediain fitur search manga."
+      },
+      "visit": "Lihat Proyek"
+    },
+    "contact": {
+      "title": "Kontak Gue",
+      "name": "Nama",
+      "email": "Email",
+      "message": "Pesan",
+      "send": "Kirim"
+    }
+}  

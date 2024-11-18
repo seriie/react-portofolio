@@ -1,0 +1,45 @@
+{
+    "lang": {
+      "name": "Basa Jawa",
+      "code": "jv_ID"
+    },
+    "about": {
+      "title": "Babagan Aku",
+      "ima": "Aku iku",
+      "focusat": "sing fokus ngembangake aplikasi moderen nganggo",
+      "more": "lan macem-macem teknologi web liyane. Aku duwe pengalaman mbangun aplikasi e-commerce, eksperimen keamanan siber, lan proyek liyane.",
+      "react": "Mbangun aplikasi web interaktif lan responsif nganggo",
+      "tailwind": "Nglakoni desain modern nganggo",
+      "mysql": {
+        "first": "Mbangun aplikasi basis data nganggo",
+        "last": "lan backend API"
+      },
+      "cyber": "Nggawe eksperimen keamanan kanggo ningkatake performa aplikasi."
+    },
+    "myskills": {
+      "title": "Kepinteran Aku"
+    },
+    "project": {
+      "title": "Proyek Aku",
+      "onetap": {
+        "title": "OneTap E-Commerce",
+        "description": "Situs e-commerce modern nganggo fitur login/register, manajemen data pangguna, lan desain responsif."
+      },
+      "animeweb": {
+        "title": "Situs Anime",
+        "description": "Situs anime prasaja sing nampilake daftar anime sing bakal teka lan fitur nggoleki anime."
+      },
+      "mangaweb": {
+        "title": "Situs Manga",
+        "description": "Situs e-commerce modern tanpa login/register, gampang diakses karo desain sing responsif."
+      },
+      "visit": "Deleng Proyek"
+    },
+    "contact": {
+      "title": "Hubungi Aku",
+      "name": "Jeneng",
+      "email": "Email",
+      "message": "Pesen",
+      "send": "Kirim"
+    }
+}  

@@ -1,0 +1,45 @@
+{
+    "lang": {
+      "name": "Basa Sunda",
+      "code": "su_ID"
+    },
+    "about": {
+      "title": "Ngeunaan Abdi",
+      "ima": "Abdi nyaeta",
+      "focusat": "nu fokus dina pamekaran aplikasi modéren maké",
+      "more": "sareng rupa-rupa téknologi wéb séjénna. Abdi boga pangalaman dina ngawangun aplikasi e-commerce, ékspérimén kaamanan siber, jeung rupa-rupa proyek séjén.",
+      "react": "Ngawangun aplikasi wéb interaktif jeung responsif maké",
+      "tailwind": "Ngaleukeunan desain modéren ku",
+      "mysql": {
+        "first": "Ngawangun aplikasi dumasar data maké",
+        "last": "jeung API backend"
+      },
+      "cyber": "Ngajalanan ékspérimén kaamanan pikeun ningkatkeun performa aplikasi."
+    },
+    "myskills": {
+      "title": "Kaahlian Abdi"
+    },
+    "project": {
+      "title": "Proyék Abdi",
+      "onetap": {
+        "title": "OneTap E-Commerce",
+        "description": "Situs e-commerce modern tanpa login/register, gampang dipaké jeung desain nu responsif."
+      },
+      "animeweb": {
+        "title": "Website Anime",
+        "description": "Website anime sederhana anu nembongkeun daptar anime anu bakal datang sarta fitur néangan anime."
+      },
+      "mangaweb": {
+        "title": "Website Manga",
+        "description": "Website manga sederhana anu nyayogikeun fitur néangan manga."
+      },
+      "visit": "Tingali Proyék"
+    },
+    "contact": {
+      "title": "Hubungi Abdi",
+      "name": "Ngaran",
+      "email": "Email",
+      "message": "Pesen",
+      "send": "Kirim"
+    }
+}  

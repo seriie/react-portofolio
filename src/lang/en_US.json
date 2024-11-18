@@ -1,0 +1,45 @@
+{
+    "lang": {
+      "name": "English",
+      "code": "en_US"
+    },
+    "about": {
+      "title": "About Me",
+      "ima": "I am a",
+      "focusat": "focusing on modern application development using",
+      "more": "and various other web technologies. I have experience in building e-commerce applications, cybersecurity experiments, and various other projects.",
+      "react": "Building interactive and responsive web applications with",
+      "tailwind": "Implementing modern designs with",
+      "mysql": {
+        "first": "Building data-driven applications using",
+        "last": "and backend APIs"
+      },
+      "cyber": "Conducting cybersecurity experiments to improve application performance."
+    },
+    "myskills": {
+      "title": "My Skills"
+    },
+    "project": {
+      "title": "My Project",
+      "onetap": {
+        "title": "OneTap E-Commerce",
+        "description": "A modern e-commerce website without login/register features, providing seamless user experience and responsive design."
+      },
+      "animeweb": {
+        "title": "Anime Website",
+        "description": "Simple anime website displaying upcoming anime list and also adding anime search feature."
+      },
+      "mangaweb": {
+        "title": "Manga Website",
+        "description": "Simple manga website that provides manga search feature."
+      },
+      "visit": "View Project"
+    },
+    "contact": {
+      "title": "Contact Me",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send"
+    }
+}  
