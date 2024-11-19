@@ -34,7 +34,7 @@ export default function Contact() {
             id="name"
             name="name"
             required
-            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } border focus:outline-none focus:ring-2 focus:ring-teal-500`}
+            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } focus:outline-none focus:ring-2 focus:ring-teal-500`}
           />
         </div>
 
@@ -50,7 +50,7 @@ export default function Contact() {
             id="email"
             name="email"
             required
-            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } border focus:outline-none focus:ring-2 focus:ring-teal-500`}
+            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } focus:outline-none focus:ring-2 focus:ring-teal-500`}
           />
         </div>
 
@@ -66,7 +66,7 @@ export default function Contact() {
             name="message"
             rows="5"
             required
-            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } border focus:outline-none focus:ring-2 focus:ring-teal-500`}
+            className={`w-full px-4 py-2 rounded-lg ${theme === "dark" ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-900' } focus:outline-none focus:ring-2 focus:ring-teal-500`}
           ></textarea>
         </div>
 
