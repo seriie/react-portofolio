@@ -41,5 +41,9 @@
       "email": "Email",
       "message": "Message",
       "send": "Send"
+    },
+    "support": {
+      "title": "Support Me by donating below!",
+      "link": "Support me on Ko-fi"
     }
 }  

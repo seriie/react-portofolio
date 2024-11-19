@@ -41,5 +41,9 @@
         "email": "Email",
         "message": "Pesan",
         "send": "Kirim"
+    },
+    "support": {
+        "title": "Support saya dengan donasi",
+        "link": "Support  saya di Ko-fi"
     }
 }

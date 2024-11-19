@@ -66,7 +66,7 @@ export default function Header() {
             </svg>
           </div>
         </a>
-        <a href="https://linkedin.com" target="_blank" className="group">
+        <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className="group">
           <span className="sr-only">LinkedIn</span>
           <div className={`w-10 h-10 flex items-center justify-center rounded-full ${theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-blue-600 transition duration-300`}>
             <svg
