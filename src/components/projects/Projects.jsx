@@ -1,7 +1,9 @@
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Projects() {
   const { translations } = useLanguage();
+  const { theme } = useTheme();
 
   if(!translations) {
     return <p>Loading...</p>
@@ -37,8 +39,8 @@ export default function Projects() {
   ];
 
   return (
-    <section className="py-16 px-6 bg-gray-900 text-gray-300">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">
+    <section className={`py-16 px-6 ${theme === "dark" ? 'bg-slate-900' : 'bg-slate-300'}`}>
+      <h2 className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? 'text-slate-100' : 'text-slate-900'} mb-8 text-center`}>
         {project.title}
       </h2>
 
@@ -46,9 +48,9 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300"
+            className={`${theme === "dark" ? 'bg-slate-800' : 'bg-slate-100'} p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300`}
           >
-            <h3 className="text-xl font-bold text-white mb-3">
+            <h3 className={`text-xl font-bold ${theme === "dark" ? 'text-slate-50': 'text-slate-900'} mb-3`}>
               {project.title}
             </h3>
 
@@ -59,7 +61,7 @@ export default function Projects() {
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="bg-teal-500 text-white text-xs px-3 py-1 rounded-full"
+                  className={`bg-teal-500 text-slate-50 text-xs px-3 py-1 rounded-full`}
                 >
                   {tech}
                 </span>

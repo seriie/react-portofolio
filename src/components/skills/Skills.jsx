@@ -1,4 +1,5 @@
 import { useLanguage } from "../../context/LanguageContext";
+import { useTheme } from "../../context/ThemeContext";
 
 const skills = [
   { name: "ReactJS", color: "bg-blue-500", icon: "⚛️" },
@@ -11,6 +12,7 @@ const skills = [
 
 export default function Skills() {
   const { translations } = useLanguage();
+  const { theme } = useTheme();
 
   if (!translations) {
     return <p>Loading...</p>;
@@ -18,8 +20,8 @@ export default function Skills() {
 
   const { myskills } = translations;
   return (
-    <section className="py-16 px-6 bg-gray-800 text-gray-300">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">
+    <section className={`py-16 px-6 ${theme === "dark" ? 'bg-slate-800' : 'bg-slate-100'}`}>
+      <h2 className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? 'text-slate-50' : 'text-slate-900'} mb-8 text-center`}>
         {myskills.title}
       </h2>
 
