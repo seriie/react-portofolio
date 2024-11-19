@@ -37,7 +37,7 @@ export default function ChangeLang() {
   });
 
   return (
-    <div className="absolute left-4 top-4 w-40" ref={dropdownRef}>
+    <div className="triggered-hover absolute left-4 top-4 w-40" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full ${theme === "dark" ? 'bg-slate-800 text-slate-100 hover:bg-slate-700' : 'bg-slate-300 text-slate-900 hover:bg-slate-200'} text-sm font-medium border border-gray-600 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer`}
@@ -45,7 +45,7 @@ export default function ChangeLang() {
         {languages.find((lang) => lang.code === langCode)?.label}
       </button>
       {isOpen && (
-        <ul className={`dropdown absolute z-10 w-full ${theme === "dark" ? 'bg-slate-700 text-slate-100' : 'bg-slate-300 text-slate-900'} rounded-lg shadow-md mt-2 p-1`}>
+        <ul className={`triggered-hover dropdown absolute z-10 w-full ${theme === "dark" ? 'bg-slate-700 text-slate-100' : 'bg-slate-300 text-slate-900'} rounded-lg shadow-md mt-2 p-1`}>
           {languages.map((lang) => (
             <li
               key={lang.code}

@@ -9,9 +9,9 @@ export default function Header() {
   const [designMode, setDesignMode] = useState(false);
   const name = "Roxy Miguardia";
 
-  const handleDesignMode = () => {
-    setDesignMode(!designMode);
-  }
+  // const handleDesignMode = () => {
+  //   setDesignMode(!designMode);
+  // }
 
   useEffect(() => {
     if(designMode) {
@@ -30,14 +30,14 @@ export default function Header() {
       }`}
     >
       <ChangeLang />
-        <div className={`text-lg absolute top-4 cursor-pointer p-2 ${theme === "dark" ? 'bg-slate-800' : 'bg-slate-300'} rounded-md hover:bg-teal-500`} onClick={handleDesignMode}>Design Mode: {designMode ? 'on' : 'off'}</div>
+        {/* <div className={`text-lg absolute top-4 cursor-pointer p-2 ${theme === "dark" ? 'bg-slate-800' : 'bg-slate-300'} rounded-md hover:bg-teal-500`} onClick={handleDesignMode}>Design Mode: {designMode ? 'on' : 'off'}</div> */}
       <ThemeToggle />
 
       <div className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ${theme === "dark" ? 'hover:shadow-customLight' : 'hover:shadow-customDark'} hover:scale-110 transition-all`}>
         <img
           src={profile}
           alt="Profile"
-          className="object-cover w-full h-full"
+          className="triggered-hover object-cover w-full h-full"
         />
       </div>
 
@@ -53,7 +53,7 @@ export default function Header() {
       </p>
 
       <div className="mt-6 flex gap-4">
-        <a href="https://github.com/seriie" target="_blank" className="group">
+        <a href="https://github.com/seriie" target="_blank" className="triggered-hover group">
           <span className="sr-only">GitHub</span>
           <div className={`w-10 h-10 flex items-center justify-center rounded-full ${theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-blue-500 transition duration-300`}>
             <svg
@@ -66,7 +66,7 @@ export default function Header() {
             </svg>
           </div>
         </a>
-        <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className="group">
+        <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className="triggered-hover group">
           <span className="sr-only">LinkedIn</span>
           <div className={`w-10 h-10 flex items-center justify-center rounded-full ${theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-blue-600 transition duration-300`}>
             <svg
@@ -79,7 +79,7 @@ export default function Header() {
             </svg>
           </div>
         </a>
-        <a href="mailto:mohammadzidane058@gmail.com" className="group">
+        <a href="mailto:mohammadzidane058@gmail.com" className="triggered-hover group">
           <span className="sr-only">Email</span>
           <div className={`w-10 h-10 flex items-center justify-center rounded-full ${theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-green-500 transition duration-300`}>
             <svg

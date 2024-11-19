@@ -71,7 +71,7 @@ export default function Projects() {
             {/* Link */}
             <a
               href={project.link}
-              className="text-teal-400 text-sm font-medium hover:underline"
+              className="triggered-hover text-teal-400 text-sm font-medium hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >

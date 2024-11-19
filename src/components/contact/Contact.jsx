@@ -72,7 +72,7 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300"
+          className="triggered-hover w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300"
         >
           {contact.send}
         </button>
