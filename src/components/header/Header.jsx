@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import profile from "../../assets/image/profile.png";
 import ChangeLang from "../change_lang/ChangeLang";
@@ -6,20 +5,15 @@ import ThemeToggle from "../theme_toggle/ThemeToggle";
 
 export default function Header() {
   const { theme } = useTheme();
-  const [designMode, setDesignMode] = useState(false);
-  const name = "Roxy Miguardia";
+  const name = 'Zzzeeee05';
 
-  // const handleDesignMode = () => {
-  //   setDesignMode(!designMode);
-  // }
-
-  useEffect(() => {
-    if(designMode) {
-      document.designMode = 'on';
-    } else {
-      document.designMode = 'off';
-    }
-  });
+ // useEffect(() => {
+  //   if(designMode) {
+  //     document.designMode = 'on';
+  //   } else {
+  //     document.designMode = 'off';
+  //   }
+  // });
 
   return (
     <div

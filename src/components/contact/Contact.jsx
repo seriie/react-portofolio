@@ -63,7 +63,7 @@ export default function Contact() {
           <label
             htmlFor="name"
             className={`block text-sm font-medium ${
-              theme === "dark" ? "text-slate-400" : "text-slate-400"
+              theme === "dark" ? "text-slate-400" : "text-slate-600"
             } mb-1`}
           >
             {contact.name}
@@ -85,7 +85,7 @@ export default function Contact() {
           <label
             htmlFor="email"
             className={`block text-sm font-medium ${
-              theme === "dark" ? "text-slate-400" : "text-slate-400"
+              theme === "dark" ? "text-slate-400" : "text-slate-600"
             } mb-1`}
           >
             {contact.email}
@@ -107,7 +107,7 @@ export default function Contact() {
           <label
             htmlFor="message"
             className={`block text-sm font-medium ${
-              theme === "dark" ? "text-slate-400" : "text-slate-400"
+              theme === "dark" ? "text-slate-400" : "text-slate-600"
             } mb-1`}
           >
             {contact.message}
