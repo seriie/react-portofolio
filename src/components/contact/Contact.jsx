@@ -12,7 +12,7 @@ export default function Contact() {
   const handleSubmit = async (event) => {
     setTimeout(() => {
       location.reload();
-    }, 500);
+    }, 2000);
     event.preventDefault();
 
     const formData = new FormData(event.target);
