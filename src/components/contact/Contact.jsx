@@ -10,9 +10,6 @@ export default function Contact() {
   }
 
   const handleSubmit = async (event) => {
-    setTimeout(() => {
-      location.reload();
-    }, 500);
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -29,6 +26,7 @@ export default function Contact() {
       
       if (response.ok) {
         console.log("Form submitted successfully!");
+        location.reload();
       } else {
         console.error("Failed to submit form");
       }
