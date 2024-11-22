@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function Contact() {
+  const [error, setError] = useState('');
   const { translations } = useLanguage();
   const { theme } = useTheme();
 
@@ -25,13 +27,16 @@ export default function Contact() {
       });
       
       if (response.ok) {
+        setError(false);
         console.log("Form submitted successfully!");
         location.reload();
       } else {
         console.error("Failed to submit form");
+        setError("Failed to submit form");
       }
     } catch (error) {
       console.error("Error:", error);
+      setError("Error: " + error.message)
     }
   };
 
@@ -122,6 +127,8 @@ export default function Contact() {
             } focus:outline-none focus:ring-2 focus:ring-teal-500`}
           ></textarea>
         </div>
+
+        {error && <p className="text-red-500">{error}</p>}
 
         <button
           type="submit"
