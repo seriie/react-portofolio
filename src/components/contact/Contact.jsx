@@ -6,6 +6,7 @@ export default function Contact() {
   const [error, setError] = useState('');
   const { translations } = useLanguage();
   const { theme } = useTheme();
+  const URL = "https://porto-api-seven.vercel.app/form";
 
   if (!translations) {
     return <p>Loading....</p>;
@@ -18,7 +19,7 @@ export default function Contact() {
     const formObject = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://porto-api-seven.vercel.app/form", {
+      const response = await fetch(URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +133,7 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="triggered-hover w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300"
+          className="triggered-hover focus:outline-teal-400 w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300"
         >
           {contact.send}
         </button>
