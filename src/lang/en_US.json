@@ -33,6 +33,10 @@
         "title": "Manga Website",
         "description": "Simple manga website that provides manga search feature."
       },
+      "earthquakeapi": {
+        "title": "Earthquake API Website",
+        "description": "A real-time earthquake notification website that provides the latest earthquake information with seamless integration and user-friendly design."
+      },
       "visit": "View Project"
     },
     "contact": {

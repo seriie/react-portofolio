@@ -3,6 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 import onetap from '../../assets/project_img/onetap.png';
 import animeweb from '../../assets/project_img/anime_web.png';
 import mangaweb from '../../assets/project_img/manga_web.png';
+import earthquakeweb from '../../assets/project_img/earthquake_web.png'
 
 export default function Projects() {
   const { translations } = useLanguage();
@@ -39,6 +40,14 @@ export default function Projects() {
       link: "https://your-manga-web.vercel.app",
       visit: project.visit,
     },
+    {
+      title: project.earthquakeapi.title,
+      description: project.earthquakeapi.description,
+      image: earthquakeweb,
+      tech: ["ReactJS", "Tailwind CSS", "API"],
+      link: "https://earthquakeapi-bmkg.vercel.app",
+      visit: project.visit,
+    }
   ];
 
   return (

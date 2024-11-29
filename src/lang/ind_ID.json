@@ -33,6 +33,10 @@
             "title": "Website Manga",
             "description": "Website manga sederhana yang menyediakan fitur pencarian manga."
         },
+        "earthquakeapi": {
+            "title": "Web Gempa Terkini",
+            "description": "Website gempa real-time yang ngasih info gempa terbaru dengan cepat dan gampang banget dipakai. Desainnya juga keren!"
+        },
         "visit": "Lihat Proyek"
     },
     "contact": {
