@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
-import profile from "../../assets/image/profile.png";
+import defaultProfile from "../../assets/image/profile-2.png";
 import ChangeLang from "../change_lang/ChangeLang";
 import ThemeToggle from "../theme_toggle/ThemeToggle";
 
 export default function Header() {
+  const [profile, setProfile] = useState(null);
+
+  const getProfileUrl = (index) => {
+    return `https://raw.githubusercontent.com/seriie/porto-profile-img/refs/heads/main/profile/ryo-${index}.png`;
+  }
+
+  const handleSetProfile = () => {
+    const index = Math.floor(Math.random() * 10) + 1;
+    setProfile(getProfileUrl(index));
+  }
+
+  useEffect(() => {
+    handleSetProfile();
+  }, [])
+
   const { theme } = useTheme();
   const name = 'Zzzeeee05';
 
@@ -29,9 +45,13 @@ export default function Header() {
 
       <div className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ${theme === "dark" ? 'hover:shadow-customLight' : 'hover:shadow-customDark'} hover:scale-110 transition-all`}>
         <img
-          src={profile}
+          src={profile || defaultProfile}
           alt="Profile"
           className="triggered-hover object-cover w-full h-full"
+          onError={(e) => {
+            e.target.onError = null;
+            e.target.src = defaultProfile;
+          }}
         />
       </div>
 

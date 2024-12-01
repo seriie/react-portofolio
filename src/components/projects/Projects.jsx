@@ -73,15 +73,12 @@ export default function Projects() {
               backgroundPosition: 'center',
             }}
           >
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-            {/* Konten */}
             <div className="relative p-6 z-10 text-white">
               <h3 className="text-xl font-bold mb-3">{project.title}</h3>
               <p className="text-sm mb-4">{project.description}</p>
 
-              {/* Teknologi */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, idx) => (
                   <span
@@ -93,7 +90,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Link */}
               <a
                 href={project.link}
                 className="text-teal-400 text-sm font-medium hover:underline"
