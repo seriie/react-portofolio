@@ -12,9 +12,9 @@ export default function ChangeLang() {
   const languages = [
     { code: "ind_ID", label: "🇮🇩 ID" },
     { code: "en_US", label: "🇺🇸 EN" },
-    { code: "jv_ID", label: "🇮🇩 Javanese" },
-    { code: "su_ID", label: "🇮🇩 Sundanese" },
-    { code: "gaul_ID", label: "🇮🇩 Gaul" },
+    // { code: "jv_ID", label: "🇮🇩 Javanese" },
+    // { code: "su_ID", label: "🇮🇩 Sundanese" },
+    // { code: "gaul_ID", label: "🇮🇩 Gaul" },
   ];
 
   const handleSelect = (code) => {
