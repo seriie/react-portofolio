@@ -1,32 +1,39 @@
-import { useLanguage } from "../../context/LanguageContext";
-import { useTheme } from "../../context/ThemeContext";
+import { useLanguage } from "../../context/LanguageContext"; // Mengimpor context bahasa
+import { useTheme } from "../../context/ThemeContext"; // Mengimpor context tema
 
 export default function AboutMe() {
-  const { theme } = useTheme();
+  const { theme } = useTheme(); // Mengambil tema yang aktif dari context
 
-  const { translations } = useLanguage();
+  const { translations } = useLanguage(); // Mengambil data terjemahan dari context
 
-  if (!translations) {
-        return <p>Loading...</p>;
+  if (!translations) { // Jika data terjemahan belum tersedia
+    return <p>Loading...</p>; // Menampilkan pesan loading
   }
 
-  const { about } = translations;
+  const { about } = translations; // Mendapatkan data tentang dari terjemahan
 
   return (
-      <section className={`flex flex-col items-center justify-center py-16 px-6 ${theme === "dark" ? 'bg-slate-900' : 'bg-slate-300'}`}>
+      <section className={`flex flex-col items-center justify-center py-16 px-6 ${theme === "dark" ? 'bg-slate-900' : 'bg-slate-300'}`}> 
+      {/* Mengatur styling dan latar belakang berdasarkan tema */}
+      
         <h2 className={`text-3xl md:text-4xl font-extrabold ${theme === "dark" ? 'text-slate-50' : 'text-slate-900'} mb-6 text-center`}>
-          {about.title}
+          {about.title} {/* Menampilkan judul yang didapat dari terjemahan */}
         </h2>
       
         <p className={`max-w-3xl text-center text-sm md:text-lg leading-relaxed ${theme === "dark" ? 'text-slate-50' : 'text-slate-900'}`}>
           {about.ima} <span className="text-blue-400 font-medium">Web Developer</span> {about.focusat} 
           <span className="text-teal-400 font-medium"> ReactJS</span>, 
-          <span className="text-indigo-400 font-medium"> Tailwind CSS</span>, {about.more}
+          <span className="text-indigo-400 font-medium"> Tailwind CSS</span>, {about.more} 
+          {/* Menampilkan teks deskripsi yang bisa disesuaikan berdasarkan tema */}
         </p>
       
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {/* Membuat grid dengan dua kolom di perangkat lebih besar */}
+          
+          {/* Setiap div berikut ini adalah deskripsi tentang skill atau teknologi */}
           <div className="flex items-start space-x-4">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-blue-500 rounded-lg text-white">
+              {/* Ikon untuk ReactJS */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -49,6 +56,7 @@ export default function AboutMe() {
       
           <div className="flex items-start space-x-4">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-teal-500 rounded-lg text-white">
+              {/* Ikon untuk Tailwind CSS */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -71,6 +79,7 @@ export default function AboutMe() {
       
           <div className="flex items-start space-x-4">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-500 rounded-lg text-white">
+              {/* Ikon untuk MySQL */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -93,6 +102,7 @@ export default function AboutMe() {
       
           <div className="flex items-start space-x-4">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-purple-500 rounded-lg text-white">
+              {/* Ikon untuk Cyber Security */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

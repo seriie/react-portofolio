@@ -1,4 +1,5 @@
 import './App.css';
+// Mengimport semua components ke root file
 import Header from './components/header/Header';
 import AboutMe from './components/about_me/AboutMe';
 import Skills from './components/skills/Skills';
@@ -9,9 +10,9 @@ import CursorCustom from './components/cursor_custom/CursorCustom';
 import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
-
   return (
     <>
+    {/* Memanggil / memakai semua components yang sudah di import */}
     <LanguageProvider>
       <div className='App'>
         <CursorCustom />
@@ -27,4 +28,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
