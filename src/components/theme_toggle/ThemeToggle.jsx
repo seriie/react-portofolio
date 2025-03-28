@@ -4,7 +4,7 @@ import sunIcon from "../../assets/icons/sun.svg";
 import moonIcon from "../../assets/icons/moon.svg";
 
 export default function ThemeToggle() {
-  const { theme, changeTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [themeIcon, setThemeIcon] = useState(
     theme === "dark" ? moonIcon : sunIcon
   );
@@ -15,7 +15,7 @@ export default function ThemeToggle() {
 
   const handleClick = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
-    changeTheme(nextTheme);
+    setTheme(nextTheme);
   }
 
   return (
