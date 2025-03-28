@@ -9,19 +9,19 @@ export const ThemeProvider = ({ children }) => {
 
   const getInitialTheme = () => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme : "dark";
+    if (savedTheme) return savedTheme;
+    return getSystemTheme();
   };
 
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState(getInitialTheme());
 
   const applyTheme = (currentTheme) => {
-    const root = document.documentElement;
-
+    const htmlElement = document.querySelector("html");
     if (currentTheme === "system") {
       const systemTheme = getSystemTheme();
-      root.className = systemTheme;
+      htmlElement.className = systemTheme;
     } else {
-      root.className = currentTheme;
+      htmlElement.className = currentTheme;
     }
   };
 
@@ -31,7 +31,11 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const changeTheme = (newTheme) => {
-    setTheme(newTheme);
+    if (newTheme === "system") {
+      setTheme(getSystemTheme());
+    } else {
+      setTheme(newTheme);
+    }
   };
 
   return (
