@@ -32,3 +32,4 @@ my_alerts/
 *.dll
 *.lnk
 server/
+.env

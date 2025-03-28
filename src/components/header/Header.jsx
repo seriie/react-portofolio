@@ -1,54 +1,53 @@
-import { useEffect, useState } from "react"; // Import hook React
-import { useTheme } from "../../context/ThemeContext"; // Import context tema
-import defaultProfile from "../../assets/image/profile-2.png"; // Import gambar profil default
-import ChangeLang from "../change_lang/ChangeLang"; // Import komponen perubahan bahasa
-import ThemeToggle from "../theme_toggle/ThemeToggle"; // Import komponen untuk toggle tema
+import { useEffect, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
+import defaultProfile from "../../assets/image/profile-2.png";
+import ChangeLang from "../change_lang/ChangeLang";
+import ThemeToggle from "../theme_toggle/ThemeToggle";
 
 export default function Header() {
-  const [profile, setProfile] = useState(null); // Menyimpan URL profil yang digunakan
-
-  const getProfileUrl = (index) => { // Fungsi untuk mendapatkan URL gambar profil berdasarkan index
+  const [profile, setProfile] = useState(null);
+  const getProfileUrl = (index) => {
     return `https://raw.githubusercontent.com/seriie/porto-profile-img/refs/heads/main/profile/ryo-${index}.png`;
   }
 
-  const handleSetProfile = () => { // Fungsi untuk mengatur profil secara acak
-    const index = Math.floor(Math.random() * 10) + 1; // Mengambil index acak antara 1 dan 10
-    setProfile(getProfileUrl(index)); // Menetapkan URL gambar profil yang dihasilkan
+  const handleSetProfile = () => {
+    const index = Math.floor(Math.random() * 10) + 1;
+    setProfile(getProfileUrl(index));
   }
 
-  useEffect(() => { // Hook useEffect untuk mengatur profil saat komponen pertama kali dimuat
-    handleSetProfile(); // Memanggil handleSetProfile untuk menetapkan profil
-  }, []) // Hanya dijalankan sekali setelah render pertama kali
+  useEffect(() => {
+    handleSetProfile();
+  }, []);
 
-  const { theme } = useTheme(); // Mendapatkan tema dari context
-  const name = 'Zzzeeee05'; // Nama pengguna yang ditampilkan
+  const { theme } = useTheme();
+  const name = 'Zzzeeee05';
 
   return (
     <div
       className={`header-bg flex flex-col items-center justify-center min-h-screen px-6 transition-all ${ // Wrapper utama dengan pengaturan layout dan tema
         theme === "dark"
-          ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white" // Jika tema gelap
-          : "bg-gradient-to-b from-gray-100 to-white text-gray-900" // Jika tema terang
+          ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white"
+          : "bg-gradient-to-b from-gray-100 to-white text-gray-900"
       }`}
     >
-      <ChangeLang /> {/* Komponen untuk mengganti bahasa */}
-      <ThemeToggle /> {/* Komponen untuk toggle tema */}
+      <ChangeLang />
+      <ThemeToggle />
 
-      <div className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ${ // Pengaturan gambar profil
+      <div className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ${ 
         theme === "dark" ? 'hover:shadow-customLight' : 'hover:shadow-customDark'} hover:scale-110 transition-all`}> 
         <img
-          src={profile || defaultProfile} // Menampilkan gambar profil jika ada, jika tidak tampilkan gambar default
+          src={profile || defaultProfile}
           alt="Profile"
-          className="triggered-hover object-cover w-full h-full" // Gaya untuk gambar
-          onError={(e) => { // Menangani error jika gambar gagal dimuat
+          className="triggered-hover object-cover w-full h-full"
+          onError={(e) => {
             e.target.onError = null;
-            e.target.src = defaultProfile; // Ganti ke gambar default jika gagal
+            e.target.src = defaultProfile;
           }}
         />
       </div>
 
       <h1 className="header-name mt-6 text-3xl md:text-5xl font-extrabold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-        {name} {/* Menampilkan nama */}
+        {name}
       </h1>
 
       <p className="header-text mt-4 text-sm md:text-lg text-center max-w-md leading-relaxed">
@@ -59,9 +58,9 @@ export default function Header() {
       </p>
 
       <div className="mt-6 flex gap-4">
-        <a href="https://github.com/seriie" target="_blank" className="triggered-hover group"> {/* Tombol GitHub */}
-          <span className="sr-only">GitHub</span> {/* Aksesibilitas untuk pembaca layar */}
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${ // Icon GitHub
+        <a href="https://github.com/seriie" target="_blank" className="triggered-hover group">
+          <span className="sr-only">GitHub</span>
+          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${
             theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-blue-500 transition duration-300`}>
             <svg
               className={`w-6 h-6 ${theme === "dark" ? 'text-slate-300 group-hover:text-slate-50' : 'text-slate-700 group-hover:text-slate-900'}`}
@@ -73,9 +72,9 @@ export default function Header() {
             </svg>
           </div>
         </a>
-        <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className="triggered-hover group"> {/* Tombol LinkedIn */}
-          <span className="sr-only">LinkedIn</span> {/* Aksesibilitas untuk pembaca layar */}
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${ // Icon LinkedIn
+        <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className="triggered-hover group">
+          <span className="sr-only">LinkedIn</span>
+          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${
             theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-blue-600 transition duration-300`}>
             <svg
               className={`w-6 h-6 ${theme === "dark" ? 'text-slate-300 group-hover:text-slate-50' : 'text-slate-700 group-hover:text-slate-900'}`}
@@ -87,9 +86,9 @@ export default function Header() {
             </svg>
           </div>
         </a>
-        <a href="mailto:mohammadzidane058@gmail.com" className="triggered-hover group"> {/* Tombol Email */}
-          <span className="sr-only">Email</span> {/* Aksesibilitas untuk pembaca layar */}
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${ // Icon Email
+        <a href="mailto:mohammadzidane058@gmail.com" className="triggered-hover group">
+          <span className="sr-only">Email</span>
+          <div className={`w-10 h-10 flex items-center justify-center rounded-full ${
             theme === "dark" ? 'bg-slate-700' : 'bg-slate-300'} group-hover:bg-green-500 transition duration-300`}>
             <svg
               className={`w-6 h-6 ${theme === "dark" ? 'text-slate-300 group-hover:text-slate-50' : 'text-slate-700 group-hover:text-slate-900'}`}
