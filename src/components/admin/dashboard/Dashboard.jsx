@@ -29,10 +29,12 @@ ChartJS.register(
 
 export default function Dashboard() {
     const [totalSubmitted, setTotalSubmitted] = useState([]);
+    const [totalVisitors, setTotalVisitors] = useState([]);
+    const [todayVisitors, setTodayVisitors] = useState([]);
     const URL = import.meta.env.VITE_BACKEND_URL;
     const countItem = [
-        { id: 1, name: 'Total Visitor', count: 100, icon: FaUser, backGround: "bg-sky-500" },
-        { id: 2, name: 'Visitor Today', count: 5, icon: FaUser, backGround: "bg-teal-500" },
+        { id: 1, name: 'Total Visitor', count: totalVisitors, icon: FaUser, backGround: "bg-sky-500" },
+        { id: 2, name: 'Visitor Today', count: todayVisitors, icon: FaUser, backGround: "bg-teal-500" },
         { id: 3, name: 'Form Submitted', count: totalSubmitted, icon: CiViewList, backGround: "bg-yellow-500" }
     ];
 
@@ -41,7 +43,26 @@ export default function Dashboard() {
             const response = await axios.get(`${URL}/form/total-submitted`);
     
             setTotalSubmitted(response.data[0].total);
-            console.log(response.data[0])
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+
+    const getTotalVisitors = async () => {
+        try {
+            const response = await axios.get(`${URL}/visitors/total`);
+
+            setTotalVisitors(response.data[0].total);
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+
+    const getTodayVisitors = async () => {
+        try {
+            const response = await axios.get(`${URL}/visitors/today`);
+
+            setTodayVisitors(response.data[0].total);
         } catch (e) {
             console.error(e.message);
         }
@@ -49,9 +70,13 @@ export default function Dashboard() {
 
     useEffect(() => {
         getTotalSubmitted();
-
+        getTotalVisitors();
+        getTodayVisitors();
+        
         const interval = setInterval(() => {
             getTotalSubmitted();
+            getTotalVisitors();
+            getTodayVisitors();
         }, 5000);
 
         return () => clearInterval(interval);
