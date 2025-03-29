@@ -7,7 +7,6 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
   LineElement,
   PointElement,
   Title,
@@ -19,7 +18,6 @@ import { useEffect, useState } from 'react';
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
   LineElement,
   PointElement,
   Title,
@@ -28,10 +26,13 @@ ChartJS.register(
 );
 
 export default function Dashboard() {
-    const [totalSubmitted, setTotalSubmitted] = useState([]);
-    const [totalVisitors, setTotalVisitors] = useState([]);
-    const [todayVisitors, setTodayVisitors] = useState([]);
+    const [totalSubmitted, setTotalSubmitted] = useState(0);
+    const [totalVisitors, setTotalVisitors] = useState(0);
+    const [visitors, setVisitors] = useState([]);
+    const [todayVisitors, setTodayVisitors] = useState(0);
+
     const URL = import.meta.env.VITE_BACKEND_URL;
+    
     const countItem = [
         { id: 1, name: 'Total Visitor', count: totalVisitors, icon: FaUser, backGround: "bg-sky-500" },
         { id: 2, name: 'Visitor Today', count: todayVisitors, icon: FaUser, backGround: "bg-teal-500" },
@@ -41,58 +42,88 @@ export default function Dashboard() {
     const getTotalSubmitted = async () => {
         try {
             const response = await axios.get(`${URL}/form/total-submitted`);
-    
             setTotalSubmitted(response.data[0].total);
         } catch (e) {
             console.error(e.message);
         }
-    }
+    };
 
     const getTotalVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
-
-            setTotalVisitors(response.data[0].total);
+            setTotalVisitors(response.data.length);
         } catch (e) {
             console.error(e.message);
         }
     }
+
+    const getVisitorsStatistics = async () => {
+        try {
+            const response = await axios.get(`${URL}/visitors/visitors-statistics`);
+            setVisitors(response.data);
+        } catch (e) {
+            console.error(e.message);
+        }
+    };
 
     const getTodayVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/today`);
-
             setTodayVisitors(response.data[0].total);
         } catch (e) {
             console.error(e.message);
         }
-    }
+    };
 
     useEffect(() => {
         getTotalSubmitted();
-        getTotalVisitors();
+        getVisitorsStatistics();
         getTodayVisitors();
+        getTotalVisitors();
         
         const interval = setInterval(() => {
             getTotalSubmitted();
-            getTotalVisitors();
+            getVisitorsStatistics();
             getTodayVisitors();
+            getTotalVisitors();
         }, 5000);
 
         return () => clearInterval(interval);
     }, []);
 
+    const chartData = {
+        labels: visitors.map((data) => data.date.slice(0,10)),
+        datasets: [
+            {
+                label: 'Visitors /day',
+                data: visitors.map((data) => data.total_visitor),
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                tension: 0.3,
+            }
+        ]
+    };
+
     return (
-        <div className="counter mx-4 flex items-center justify-around">
-            {countItem.map(({ id, name, count, icon: Icon, backGround }) => (
-                <div key={id} className={`flex ${backGround} rounded-md p-4 items-center space-x-4`}>
-                    <div>
-                        <p className="text-5xl text-white">{count}</p>
-                        <p className="text-lg text-white">{name}</p>
+        <div className="mx-4">
+            <div className="counter flex items-center justify-around mb-8">
+                {countItem.map(({ id, name, count, icon: Icon, backGround }) => (
+                    <div key={id} className={`flex ${backGround} rounded-md p-4 items-center space-x-4`}>
+                        <div>
+                            <p className="text-5xl text-white">{count}</p>
+                            <p className="text-lg text-white">{name}</p>
+                        </div>
+                        <Icon className="w-20 h-20 text-white" />
                     </div>
-                    <Icon className="w-20 h-20 text-white" />
-                </div>
-            ))}
+                ))}
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-bold mb-4">Visitor Statistics</h2>
+                <Line data={chartData} />
+            </div>
         </div>
     );
 }

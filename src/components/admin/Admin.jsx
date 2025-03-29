@@ -23,7 +23,7 @@ export default function Admin() {
       <div
         className={`${
           isOpen ? "w-52" : "w-12"
-        } transition-all duration-300 fixed flex flex-col left-0 h-full bg-teal-500 shadow-lg shadow-teal-500/50`}
+        } transition-all duration-300 overflow-hidden fixed flex flex-col left-0 h-full bg-teal-500 shadow-lg shadow-teal-500/50`}
       >
         <img
           onClick={() => setIsOpen((prev) => !prev)}
