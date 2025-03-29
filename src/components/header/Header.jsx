@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <div
-      className={`header-bg flex flex-col items-center justify-center min-h-screen px-6 transition-all ${ // Wrapper utama dengan pengaturan layout dan tema
+      className={`header-bg flex flex-col items-center justify-center min-h-screen px-6 transition-all ${
         theme === "dark"
           ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white"
           : "bg-gradient-to-b from-gray-100 to-white text-gray-900"

@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 import { useLanguage } from "../../context/LanguageContext";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function Contact() {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { translations } = useLanguage();
   const { theme } = useTheme();
   const URL = import.meta.env.VITE_BACKEND_URL;
@@ -19,25 +20,18 @@ export default function Contact() {
     const formObject = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(`${URL}/form`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formObject)
+      const response = await axios.post(`${URL}/form`, formObject, {
+        headers: { "Content-Type": "application/json" },
       });
-      
-      if (response.ok) {
+
+      if (response.status === 200) {
         setError(false);
         console.log("Form submitted successfully!");
         location.reload();
-      } else {
-        console.error("Failed to submit form");
-        setError("Failed to submit form");
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("Error: " + error.message)
+      setError("Error: " + (error.response?.data?.message || error.message));
     }
   };
 
@@ -132,7 +126,7 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="triggered-hover focus:outline-teal-400 w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300" // Tombol submit form dengan animasi hover
+          className="triggered-hover focus:outline-teal-400 w-full bg-teal-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-teal-600 transition duration-300"
         >
           {contact.send}
         </button>
