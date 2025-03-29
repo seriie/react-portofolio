@@ -41,6 +41,7 @@ export default function Dashboard() {
             const response = await axios.get(`${URL}/form/total-submitted`);
     
             setTotalSubmitted(response.data[0].total);
+            console.log(response.data[0])
         } catch (e) {
             console.error(e.message);
         }
