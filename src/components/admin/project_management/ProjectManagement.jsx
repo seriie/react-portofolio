@@ -11,6 +11,7 @@ export default function ProjectManagement() {
     const [formData, setFormData] = useState({
         name: "", image: "", description: "", link: "", techstack: ""
     });
+    const [isUpdating, setIsUpdating] = useState(false);
     const [editingId, setEditingId] = useState(null);
     const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -31,6 +32,8 @@ export default function ProjectManagement() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        editingId ? setIsUpdating(true) : setIsUpdating(false);
+
         try {
             if (editingId) {
                 await axios.put(`${URL}/projects/${editingId}`, formData);
@@ -40,8 +43,12 @@ export default function ProjectManagement() {
             setFormData({ name: "", image: "", description: "", link: "", techstack: "" });
             setEditingId(null);
             fetchProjects();
+            setIsUpdating(false)
         } catch (e) {
             console.log(e.message);
+            setIsUpdating(false);
+        } finally {
+            setIsUpdating(false);
         }
     };
 
@@ -78,7 +85,7 @@ export default function ProjectManagement() {
                 </div>
                 <Textarea name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
                 <button className="mt-4 w-full bg-sky-500 p-2 rounded-md hover:bg-sky-400 text-white" type="submit">
-                    {editingId ? 'Update Project' : 'Add Project'}
+                    {isUpdating ? 'Updating...' : editingId ? 'Update Project' : 'Add Project'}
                 </button>
             </form>
 
