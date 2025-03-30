@@ -51,7 +51,8 @@ export default function Dashboard() {
     const getTotalVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
-            setTotalVisitors(response.data.length / 3);
+            const totalDecimal = response.data.length
+            setTotalVisitors(totalDecimal.toFixed(0));
         } catch (e) {
             console.error(e.message);
         }
