@@ -96,7 +96,7 @@ export default function Dashboard() {
         datasets: [
             {
                 label: 'Visitors /day',
-                data: visitors.map((data) => data.total_visitor / 3),
+                data: visitors.map((data) => data.total_visitor),
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderWidth: 2,
