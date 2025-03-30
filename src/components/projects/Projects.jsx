@@ -1,54 +1,33 @@
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import onetap from '../../assets/project_img/onetap.png';
-import animeweb from '../../assets/project_img/anime_web.png';
-import mangaweb from '../../assets/project_img/manga_web.png';
-import earthquakeweb from '../../assets/project_img/earthquake_web.png';
+import axios from 'axios';
 
 export default function Projects() {
+  const [projects, setProjects] = useState([]);
   const { translations } = useLanguage();
   const { theme } = useTheme();
+  const URL = import.meta.env.VITE_BACKEND_URL;
+
+  const getProjects = async () => {
+    try {
+      const response = await axios.get(`${URL}/projects`);
+
+      setProjects(response.data);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
+
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   if (!translations) {
     return <p>Loading...</p>;
   }
 
-  const { project } = translations;
-
-  const projects = [
-    {
-      title: project.onetap.title,
-      description: project.onetap.description,
-      image: onetap,
-      tech: ["ReactJS", "Tailwind CSS"],
-      link: "https://justonetap.vercel.app",
-      visit: project.visit,
-    },
-    {
-      title: project.animeweb.title,
-      description: project.animeweb.description,
-      image: animeweb,
-      tech: ["ReactJS", "Tailwind CSS", "API"],
-      link: "https://your-anime-web.vercel.app",
-      visit: project.visit,
-    },
-    {
-      title: project.mangaweb.title,
-      description: project.mangaweb.description,
-      image: mangaweb,
-      tech: ["ReactJS", "Tailwind CSS", "API"],
-      link: "https://your-manga-web.vercel.app",
-      visit: project.visit,
-    },
-    {
-      title: project.earthquakeapi.title,
-      description: project.earthquakeapi.description,
-      image: earthquakeweb,
-      tech: ["ReactJS", "Tailwind CSS", "API"],
-      link: "https://earthquakeapi-bmkg.vercel.app",
-      visit: project.visit,
-    }
-  ];
+  const { project: proj } = translations;
 
   return (
     <section
@@ -59,7 +38,7 @@ export default function Projects() {
           theme === 'dark' ? 'text-slate-100' : 'text-slate-900'
         } mb-8 text-center`}
       >
-        {project.title}
+        {proj.title}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -76,11 +55,11 @@ export default function Projects() {
             <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
             <div className="relative p-6 z-10 text-white">
-              <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+              <h3 className="text-xl font-bold mb-3">{project.name}</h3>
               <p className="text-sm mb-4">{project.description}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, idx) => (
+                {project.techstack.split(", ").map((tech, idx) => (
                   <span
                     key={idx}
                     className="bg-gradientToRight text-white text-xs px-3 py-1 rounded-full"
@@ -91,12 +70,12 @@ export default function Projects() {
               </div>
 
               <a
-                href={project.link}
+                href={project.link.startsWith("http") ? project.link : `https://${project.link}`}
                 className="text-teal-400 text-sm font-medium hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {project.visit}
+                {proj.visit}
               </a>
             </div>
           </div>
