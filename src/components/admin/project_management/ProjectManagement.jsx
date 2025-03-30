@@ -32,6 +32,7 @@ export default function ProjectManagement() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsUpdating(true);
 
         try {
             if (editingId) {
