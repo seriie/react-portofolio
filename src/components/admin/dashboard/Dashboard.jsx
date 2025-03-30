@@ -51,7 +51,7 @@ export default function Dashboard() {
     const getTotalVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
-            setTotalVisitors(response.data.length);
+            setTotalVisitors(response.data.length / 3);
         } catch (e) {
             console.error(e.message);
         }
@@ -69,7 +69,7 @@ export default function Dashboard() {
     const getTodayVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/today`);
-            setTodayVisitors(response.data[0].total);
+            setTodayVisitors(response.data[0].total / 3);
         } catch (e) {
             console.error(e.message);
         }
@@ -96,7 +96,7 @@ export default function Dashboard() {
         datasets: [
             {
                 label: 'Visitors /day',
-                data: visitors.map((data) => data.total_visitor),
+                data: visitors.map((data) => data.total_visitor / 3),
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderWidth: 2,
@@ -111,7 +111,7 @@ export default function Dashboard() {
             <div className="counter flex items-center justify-around mb-8">
                 {countItem.map(({ id, name, count, icon: Icon, backGround }) => (
                     <div key={id} className={`flex ${backGround} rounded-md p-4 items-center space-x-4`}>
-                        <div>
+                        <div className=''>
                             <p className="text-5xl text-white">{count}</p>
                             <p className="text-lg text-white">{name}</p>
                         </div>

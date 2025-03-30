@@ -3,6 +3,7 @@ import plusIcon from "../../assets/icons/plus_icon.png";
 import homeIcon from "../../assets/icons/home_icon.png";
 import projectIcon from "../../assets/icons/project_icon.png";
 import Dashboard from "./dashboard/Dashboard";
+import ProjectManagement from "./project_management/ProjectManagement";
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: homeIcon },
@@ -52,7 +53,7 @@ export default function Admin() {
 
       <div className={`transition-all duration-300 ${isOpen ? "ml-52" : "ml-12"} w-full p-4`}>
         {selectedTab === "dashboard" && <Dashboard />}
-        {selectedTab === "manageProject" && <h1 className="text-2xl font-bold">Manage Project Page</h1>}
+        {selectedTab === "manageProject" && <ProjectManagement />}
       </div>
     </div>
   );

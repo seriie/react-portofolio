@@ -1,8 +1,8 @@
 body {
     overflow-x: hidden;
-    font-family: 'Poppins', cursive, sans-serif;
 }
 
 * {
     scroll-behavior: smooth;
+    font-family: 'Poppins', cursive, sans-serif;
 }
