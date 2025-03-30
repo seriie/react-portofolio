@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { LuMessageCircleMore } from "react-icons/lu";
 import plusIcon from "../../assets/icons/plus_icon.png";
 import homeIcon from "../../assets/icons/home_icon.png";
 import projectIcon from "../../assets/icons/project_icon.png";
 import Dashboard from "./dashboard/Dashboard";
 import ProjectManagement from "./project_management/ProjectManagement";
+import Message from "./message/Message";
 
 const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: homeIcon },
-  { id: "manageProject", label: "Manage Project", icon: projectIcon },
+  { id: "dashboard", label: "Dashboard", icon: homeIcon, isComponent: false },
+  { id: "manageProject", label: "Manage Project", icon: projectIcon, isComponent: false },
+  { id: "message", label: "Message", icon: <LuMessageCircleMore className="w-8 h-8 text-white" />, isComponent: true },
 ];
 
 export default function Admin() {
@@ -59,25 +62,25 @@ export default function Admin() {
         />
 
         <div className="p-1 mt-4">
-          {menuItems.map(({ id, label, icon }) => (
+          {menuItems.map(({ id, label, icon, isComponent }) => (
             <div
-              key={id}
-              onClick={() => setSelectedTab(id)}
-              className={`cursor-pointer mt-2 p-1 rounded-md flex items-center transition-all duration-100 ${
-                selectedTab === id ? "bg-indigo-500 text-white" : "hover:bg-teal-400 text-gray-200"
+            key={id}
+            onClick={() => setSelectedTab(id)}
+            className={`cursor-pointer mt-2 p-1 rounded-md flex items-center transition-all duration-100 ${
+              selectedTab === id ? "bg-indigo-500 text-white" : "hover:bg-teal-400 text-gray-200"
               }`}
-            >
-              <img className="w-8" src={icon} alt={label} />
-              {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
+              >
+            {isComponent ? icon : <img className="w-8" src={icon} alt={label} />}
+            {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Main Content */}
       <div className={`transition-all duration-300 ${isOpen ? "ml-52" : "ml-12"} w-full p-4`}>
         {selectedTab === "dashboard" && <Dashboard />}
         {selectedTab === "manageProject" && <ProjectManagement />}
+        {selectedTab === "message" && <Message />}
       </div>
     </div>
   );
