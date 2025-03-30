@@ -58,11 +58,11 @@ export default function Projects() {
               <h3 className="text-xl font-bold mb-3">{project.name}</h3>
               <p className="text-sm mb-4">{project.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1 mb-4">
                 {project.techstack.split(", ").map((tech, idx) => (
                   <span
                     key={idx}
-                    className="bg-gradientToRight text-white text-xs px-3 py-1 rounded-full"
+                    className="bg-gradientToRight text-white text-xs px-2 py-1 rounded-full"
                   >
                     {tech}
                   </span>
@@ -70,7 +70,7 @@ export default function Projects() {
               </div>
 
               <a
-                href={project.link.startsWith("http") ? project.link : `https://${project.link}`}
+                href={project.link.startsWith("https") ? project.link : `https://${project.link}`}
                 className="text-teal-400 text-sm font-medium hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
