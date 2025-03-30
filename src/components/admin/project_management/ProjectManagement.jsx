@@ -83,7 +83,7 @@ export default function ProjectManagement() {
                         <h4 className="text-lg font-bold mt-2">{project.name}</h4>
                         <p className="text-sm text-gray-600">{project.description}</p>
                         <p className="text-sm mt-1"><strong>Tech Stack:</strong> {project.techstack}</p>
-                        <a href={project.link} target="_blank" className="text-teal-500 inline font-bold mt-2 block">View Project</a>
+                        <a href={project.link} target="_blank" className="text-teal-500 inline font-bold mt-2">View Project</a>
                         <button onClick={() => handleDeleteProjects(project.id)} className="p-2 bg-red-500 text-slate-100 rounded-md float-right">Delete</button>
                     </div>
                 ))}
