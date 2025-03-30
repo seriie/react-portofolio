@@ -52,7 +52,7 @@ export default function Dashboard() {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
             const totalDecimal = response.data.length
-            setTotalVisitors(totalDecimal.toFixed(0));
+            setTotalVisitors(totalDecimal);
         } catch (e) {
             console.error(e.message);
         }
