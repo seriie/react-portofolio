@@ -69,7 +69,7 @@ export default function Dashboard() {
     const getTodayVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/today`);
-            setTodayVisitors(response.data.total);
+            setTodayVisitors(response.data[0].total);
         } catch (e) {
             console.error(e.message);
         }
