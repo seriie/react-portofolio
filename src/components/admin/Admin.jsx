@@ -11,13 +11,36 @@ const menuItems = [
 ];
 
 export default function Admin() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedTab, setSelectedTab] = useState("dashboard");
-    
-    useEffect(() => {
-        document.title = `Admin - ${menuItems.find(item => item.id === selectedTab)?.label}`;
-    }, [selectedTab]);
-    
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("dashboard");
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
+
+  const ADMIN_USERNAME = import.meta.env.VITE_ADMIN_USERNAME;
+  const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+
+  useEffect(() => {
+    document.title = `Admin - ${menuItems.find((item) => item.id === selectedTab)?.label}`;
+  }, [selectedTab]);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      const username = prompt("Username:");
+      const password = prompt("Password:");
+
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        setIsLoggedIn(true);
+        localStorage.setItem("isLoggedIn", "true");
+      } else {
+        setIsLoggedIn(false);
+        localStorage.removeItem("isLoggedIn");
+        alert("Login failed!");
+      }
+    }
+  }, []);
+
+  if (!isLoggedIn) return <h1 className="text-center mt-10 text-2xl font-bold">Access Denied</h1>;
 
   return (
     <div className="flex">
@@ -51,6 +74,7 @@ export default function Admin() {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className={`transition-all duration-300 ${isOpen ? "ml-52" : "ml-12"} w-full p-4`}>
         {selectedTab === "dashboard" && <Dashboard />}
         {selectedTab === "manageProject" && <ProjectManagement />}
