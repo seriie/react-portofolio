@@ -84,7 +84,7 @@ export default function ProjectManagement() {
                     <Input type="text" name="techstack" placeholder="Tech Stack (comma separated)" onChange={handleChange} value={formData.techstack} required />
                 </div>
                 <Textarea name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
-                <button className="mt-4 w-full bg-sky-500 p-2 rounded-md hover:bg-sky-400 text-white" type="submit">
+                <button className={`mt-4 w-full ${isUpdating ? 'bg-sky-400' : 'bg-sky-500'} p-2 rounded-md hover:bg-sky-400 text-white`} type="submit">
                     {isUpdating ? 'Updating...' : editingId ? 'Update Project' : 'Add Project'}
                 </button>
             </form>
