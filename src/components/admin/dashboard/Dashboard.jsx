@@ -51,8 +51,8 @@ export default function Dashboard() {
     const getTotalVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
-            const totalDecimal = response.data.length
-            setTotalVisitors(totalDecimal);
+            const totalDecimal = response.data.length / 3
+            setTotalVisitors(totalDecimal.toFixed());
         } catch (e) {
             console.error(e.message);
         }
@@ -70,7 +70,8 @@ export default function Dashboard() {
     const getTodayVisitors = async () => {
         try {
             const response = await axios.get(`${URL}/visitors/today`);
-            setTodayVisitors(response.data[0].total / 3);
+            const totalDecimal = response.data[0].total / 3
+            setTodayVisitors(totalDecimal.toFixed());
         } catch (e) {
             console.error(e.message);
         }
