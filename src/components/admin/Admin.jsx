@@ -16,6 +16,7 @@ const menuItems = [
 export default function Admin() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState("dashboard");
+  const [isMobile, setIsMobile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
@@ -28,7 +29,14 @@ export default function Admin() {
   }, [selectedTab]);
 
   useEffect(() => {
-    // if (window.innerHeight <= )
+    window.addEventListener('resize', function () {
+      if (window.innerWidth <= 750) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+
     if (!isLoggedIn) {
       const username = prompt("Username:");
       const password = prompt("Password:");
@@ -43,46 +51,91 @@ export default function Admin() {
       }
     }
   }, []);
+  
+  const selectTab = (id) => {
+    setSelectedTab(id);
+    setIsOpen(false);
+  }
 
   if (!isLoggedIn) return <h1 className="text-center mt-10 text-2xl font-bold">Access Denied</h1>;
 
   return (
-    <div className="flex">
-      <div
-        className={`${
-          isOpen ? "w-52" : "w-12"
-        } transition-all duration-300 overflow-hidden fixed flex flex-col left-0 h-full bg-teal-500 shadow-lg shadow-teal-500/50`}
-      >
-        <img
-          onClick={() => setIsOpen((prev) => !prev)}
-          className={`cursor-pointer w-8 h-8 mt-2 transform transition-all duration-300 ${
-            isOpen ? "rotate-45 ml-auto mr-2" : "rotate-0 ml-auto mr-2"
-          }`}
-          src={plusIcon}
-          alt="Toggle Sidebar"
-        />
-
-        <div className="p-1 mt-4">
-          {menuItems.map(({ id, label, icon, isComponent }) => (
-            <div
-            key={id}
-            onClick={() => setSelectedTab(id)}
-            className={`cursor-pointer mt-2 p-1 rounded-md flex items-center transition-all duration-100 ${
-              selectedTab === id ? "bg-indigo-500 text-white" : "hover:bg-teal-400 text-gray-200"
+      isMobile ? (
+        <div className="flex">
+          <div
+            className={`${
+              isOpen ? "h-52" : "h-12"
+            } z-10 transition-all duration-300 overflow-hidden absolute flex flex-col top-0 right-0 left-0 W-full bg-teal-500 shadow-lg shadow-teal-500/50`}
+          >
+            <img
+              onClick={() => setIsOpen((prev) => !prev)}
+              className={`cursor-pointer w-8 h-8 mt-2 transform transition-all duration-300 ${
+                isOpen ? "rotate-45 mx-auto" : "rotate-0 mx-auto"
               }`}
-              >
-            {isComponent ? icon : <img className="w-8" src={icon} alt={label} />}
-            {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
+              src={plusIcon}
+              alt="Toggle Sidebar"
+            />
+    
+            <div className="p-1 mt-4">
+              {menuItems.map(({ id, label, icon, isComponent }) => (
+                <div
+                key={id}
+                onClick={() => selectTab(id)}
+                className={`cursor-pointer mt-2 p-1 rounded-md flex items-center transition-all duration-100 ${
+                  selectedTab === id ? "bg-indigo-500 text-white" : "hover:bg-teal-400 text-gray-200"
+                  }`}
+                  >
+                {isComponent ? icon : <img className="w-8" src={icon} alt={label} />}
+                {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+    
+          <div className={`mt-10 transition-all duration-300 ${isOpen ? "" : ""} w-full p-4`}>
+            {selectedTab === "dashboard" && <Dashboard />}
+            {selectedTab === "manageProject" && <ProjectManagement />}
+            {selectedTab === "message" && <Message />}
+          </div>
         </div>
-      </div>
-
-      <div className={`transition-all duration-300 ${isOpen ? "ml-52" : "ml-12"} w-full p-4`}>
-        {selectedTab === "dashboard" && <Dashboard />}
-        {selectedTab === "manageProject" && <ProjectManagement />}
-        {selectedTab === "message" && <Message />}
-      </div>
-    </div>
+      ) : (
+        <div className="flex">
+          <div
+            className={`${
+              isOpen ? "w-52" : "w-12"
+            } z-10 transition-all duration-300 overflow-hidden fixed flex flex-col left-0 h-full bg-teal-500 shadow-lg shadow-teal-500/50`}
+          >
+            <img
+              onClick={() => setIsOpen((prev) => !prev)}
+              className={`cursor-pointer w-8 h-8 mt-2 transform transition-all duration-300 ${
+                isOpen ? "rotate-45 ml-auto mr-2" : "rotate-0 ml-auto mr-2"
+              }`}
+              src={plusIcon}
+              alt="Toggle Sidebar"
+            />
+    
+            <div className="p-1 mt-4">
+              {menuItems.map(({ id, label, icon, isComponent }) => (
+                <div
+                key={id}
+                onClick={() => setSelectedTab(id)}
+                className={`cursor-pointer mt-2 p-1 rounded-md flex items-center transition-all duration-100 ${
+                  selectedTab === id ? "bg-indigo-500 text-white" : "hover:bg-teal-400 text-gray-200"
+                  }`}
+                  >
+                {isComponent ? icon : <img className="w-8" src={icon} alt={label} />}
+                {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+    
+          <div className={`transition-all duration-300 ${isOpen ? "ml-52" : "ml-12"} w-full p-4`}>
+            {selectedTab === "dashboard" && <Dashboard />}
+            {selectedTab === "manageProject" && <ProjectManagement />}
+            {selectedTab === "message" && <Message />}
+          </div>
+        </div>
+      )
   );
 }
