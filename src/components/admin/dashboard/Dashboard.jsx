@@ -122,22 +122,27 @@ export default function Dashboard() {
 
     return (
         <div className="mx-4">
-            <div className="counter flex items-center justify-around mb-8">
-                {countItem.map(({ id, name, count, icon: Icon, backGround }) => (
-                    <div key={id} className={`flex ${backGround} rounded-md p-4 items-center space-x-4`}>
-                        <div className=''>
-                            <p className="text-5xl text-white">{count}</p>
-                            <p className="text-lg text-white">{name}</p>
-                        </div>
-                        <Icon className="w-20 h-20 text-white" />
-                    </div>
-                ))}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {countItem.map(({ id, name, count, icon: Icon, backGround }) => (
+              <div
+                key={id}
+                className={`flex items-center justify-between w-full sm:w-[48%] lg:w-[23%] ${backGround} rounded-lg p-5 shadow-lg`}
+              >
+                <div>
+                  <p className="text-5xl font-bold text-white">{count}</p>
+                  <p className="text-lg text-white mt-1">{name}</p>
+                </div>
+                <Icon className="w-16 h-16 text-white" />
+              </div>
+            ))}
+          </div>
+        
+          <div className="bg-white p-6 rounded-lg shadow-md w-full">
+            <h2 className="text-xl font-bold mb-4">Visitor Statistics</h2>
+            <div className="w-full h-96">
+              <Line data={chartData} />
             </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-xl font-bold mb-4">Visitor Statistics</h2>
-                <Line data={chartData} />
-            </div>
+          </div>
         </div>
     );
 }

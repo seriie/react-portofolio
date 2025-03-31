@@ -28,6 +28,7 @@ export default function Admin() {
   }, [selectedTab]);
 
   useEffect(() => {
+    // if (window.innerHeight <= )
     if (!isLoggedIn) {
       const username = prompt("Username:");
       const password = prompt("Password:");
