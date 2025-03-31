@@ -73,46 +73,47 @@ export default function ProjectManagement() {
 
     return (
         <div className="p-6 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-center">Manage Projects</h2>
-            
-            <form onSubmit={handleSubmit} className="bg-white text-slate-800 p-6 shadow-md rounded-lg mb-6">
-                <div className="grid grid-cols-2 gap-4">
-                    <Input type="text" name="name" placeholder="Project Name" onChange={handleChange} value={formData.name} required />
-                    <Input type="text" name="image" placeholder="Image URL" onChange={handleChange} value={formData.image} />
-                    <Input type="text" name="link" placeholder="Project Link" onChange={handleChange} value={formData.link} required />
-                    <Input type="text" name="techstack" placeholder="Tech Stack (comma separated)" onChange={handleChange} value={formData.techstack} required />
-                </div>
-                <Textarea className="mt-4" name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
-                <button 
-                    className={`mt-4 w-full ${isUpdating ? 'bg-sky-400' : 'bg-sky-500'} p-2 rounded-md hover:bg-sky-400 text-white`} 
-                    type="submit"
-                    disabled={isUpdating}
-                >
-                    {isUpdating ? 'Updating...' : editingId ? 'Update Project' : 'Add Project'}
-                </button>
+        <h2 className="text-3xl font-bold mb-6 text-center">Manage Projects</h2>
 
-            </form>
-
-            <h3 className="text-xl font-bold mb-4">Project List</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {projects.map((project) => (
-                    <Card key={project.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <img src={project.image} alt={project.name} className="w-full h-40 object-cover" />
-                        <CardContent>
-                            <h4 className="text-lg font-bold">{project.name}</h4>
-                            <p className="text-sm text-gray-600">{project.description}</p>
-                            <p className="text-sm mt-1"><strong>Tech Stack:</strong> {project.techstack}</p>
-                            <div className="flex justify-between mt-4">
-                                <a href={project.link.startsWith("https") ? project.link : `https://${project.link}`} target="_blank" className="text-blue-500 font-bold">View</a>
-                                <div>
-                                    <button onClick={() => handleEdit(project)} className="hover:bg-yellow-400 mr-2 py-2 px-3 rounded-md bg-yellow-500 text-white">Edit</button>
-                                    <button onClick={() => handleDelete(project.id)} className="hover:bg-red-400 bg-red-500 py-2 px-3 rounded-md text-white">Delete</button>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg mb-6">
+            <div className="flex flex-wrap gap-4">
+                <Input className="flex-1 min-w-[200px]" type="text" name="name" placeholder="Project Name" onChange={handleChange} value={formData.name} required />
+                <Input className="flex-1 min-w-[200px]" type="text" name="image" placeholder="Image URL" onChange={handleChange} value={formData.image} />
+                <Input className="flex-1 min-w-[200px]" type="text" name="link" placeholder="Project Link" onChange={handleChange} value={formData.link} required />
+                <Input className="flex-1 min-w-[200px]" type="text" name="techstack" placeholder="Tech Stack" onChange={handleChange} value={formData.techstack} required />
             </div>
+            <Textarea className="mt-4" name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
+            <button 
+                className={`mt-4 w-full ${isUpdating ? 'bg-sky-400' : 'bg-sky-500'} p-2 rounded-lg hover:bg-sky-400 transition duration-200 text-white`} 
+                type="submit"
+                disabled={isUpdating}
+            >
+                {isUpdating ? 'Updating...' : editingId ? 'Update Project' : 'Add Project'}
+            </button>
+        </form>
+
+        {/* Project List */}
+        <h3 className="text-xl font-bold mb-4">Project List</h3>
+        <div className="flex flex-wrap gap-6 justify-center">
+            {projects.map((project) => (
+                <Card key={project.id} className="bg-white shadow-lg rounded-lg overflow-hidden w-full sm:w-[48%]">
+                    <img src={project.image} alt={project.name} className="w-full h-40 object-cover" />
+                    <CardContent className="p-4">
+                        <h4 className="text-lg font-bold">{project.name}</h4>
+                        <p className="text-sm text-gray-600">{project.description}</p>
+                        <p className="text-sm mt-1"><strong>Tech Stack:</strong> {project.techstack}</p>
+                        <div className="flex justify-between mt-4">
+                            <a href={project.link.startsWith("https") ? project.link : `https://${project.link}`} target="_blank" className="text-blue-500 font-bold hover:underline">View</a>
+                            <div className="flex gap-2">
+                                <button onClick={() => handleEdit(project)} className="hover:bg-yellow-400 py-2 px-3 rounded-md bg-yellow-500 text-white">Edit</button>
+                                <button onClick={() => handleDelete(project.id)} className="hover:bg-red-400 bg-red-500 py-2 px-3 rounded-md text-white">Delete</button>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+            ))}
         </div>
+    </div>
     );
 }
