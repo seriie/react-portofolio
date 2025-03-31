@@ -36,6 +36,11 @@ export default function Admin() {
         setIsMobile(false);
       }
     });
+    if (window.innerWidth <= 750) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
 
     if (!isLoggedIn) {
       const username = prompt("Username:");
