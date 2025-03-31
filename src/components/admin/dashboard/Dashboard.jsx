@@ -30,13 +30,15 @@ export default function Dashboard() {
     const [totalVisitors, setTotalVisitors] = useState(0);
     const [visitors, setVisitors] = useState([]);
     const [todayVisitors, setTodayVisitors] = useState(0);
+    const [monthlyVisitors, setMonthlyVisitors] = useState(0);
 
     const URL = import.meta.env.VITE_BACKEND_URL;
     
     const countItem = [
         { id: 1, name: 'Total Visitor', count: totalVisitors, icon: FaUser, backGround: "bg-sky-500" },
-        { id: 2, name: 'Visitor Today', count: todayVisitors, icon: FaUser, backGround: "bg-teal-500" },
-        { id: 3, name: 'Form Submitted', count: totalSubmitted, icon: CiViewList, backGround: "bg-yellow-500" }
+        { id: 2, name: 'Monthly Visitors', count: monthlyVisitors, icon: FaUser, backGround: "bg-fuchsia-500" },
+        { id: 3, name: 'Today Visitor', count: todayVisitors, icon: FaUser, backGround: "bg-teal-500" },
+        { id: 4, name: 'Form Submitted', count: totalSubmitted, icon: CiViewList, backGround: "bg-yellow-500" },
     ];
 
     const getTotalSubmitted = async () => {
@@ -52,6 +54,16 @@ export default function Dashboard() {
         try {
             const response = await axios.get(`${URL}/visitors/total`);
             setTotalVisitors(response.data.length);
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+
+    const getMonthlyVisitors = async () => {
+        try {
+            const response = await axios.get(`${URL}/visitors/month`);
+            setMonthlyVisitors(response.data.length);
+            console.log(response)
         } catch (e) {
             console.error(e.message);
         }
@@ -80,12 +92,14 @@ export default function Dashboard() {
         getVisitorsStatistics();
         getTodayVisitors();
         getTotalVisitors();
+        getMonthlyVisitors();
         
         const interval = setInterval(() => {
             getTotalSubmitted();
             getVisitorsStatistics();
             getTodayVisitors();
             getTotalVisitors();
+            getMonthlyVisitors();
         }, 5000);
 
         return () => clearInterval(interval);
