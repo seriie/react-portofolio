@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
   	extend: {
+		lineClamp: {
+			'3': 3
+		},
   		boxShadow: {
   			customLight: '0 0 20px 3px #F8FAFC',
   			customDark: '0 0 20px 3px #020617'

@@ -75,7 +75,6 @@ export default function ProjectManagement() {
         <div className="p-6 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center">Manage Projects</h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg mb-6">
             <div className="flex flex-wrap gap-4">
                 <Input className="flex-1 min-w-[200px]" type="text" name="name" placeholder="Project Name" onChange={handleChange} value={formData.name} required />
@@ -93,7 +92,6 @@ export default function ProjectManagement() {
             </button>
         </form>
 
-        {/* Project List */}
         <h3 className="text-xl font-bold mb-4">Project List</h3>
         <div className="flex flex-wrap gap-6 justify-center">
             {projects.map((project) => (

@@ -31,8 +31,8 @@ export default function Message() {
                           </div>
                           <div className="p-4 bg-gray-700">
                             <p className='text-slate-50'><strong className="text-teal-500">Name:</strong> {item.name}</p>
-                            <p className='text-slate-50'><strong className="text-teal-500">Email:</strong> {item.email}</p>
-                            <p className='text-slate-50'><strong className="text-teal-500">Message:</strong> {item.message}</p>
+                            <p className='text-slate-50 line-clamp-3'><strong className="text-teal-500">Email:</strong> {item.email}</p>
+                            <p className='text-slate-50 line-clamp-3'><strong className="text-teal-500">Message:</strong> {item.message}</p>
                             <p className="text-sm text-gray-500 mt-4"><strong>Created At:</strong> {item.datetime}</p>
                           </div>
                         </div>
