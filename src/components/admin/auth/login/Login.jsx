@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
@@ -9,8 +9,11 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [forgotPwClicked, setForgotPwClicked] = useState(false);
+    const [passwordInvalid, setPasswordInvalid] = useState(false);
     const ADMIN_USERNAME = import.meta.env.VITE_ADMIN_USERNAME;
     const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+    const ADMIN_NAME = import.meta.env.VITE_ADMIN_NAME;
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -23,9 +26,36 @@ export default function Login() {
                 setError("Please fill all fields!");
             } else {
                 setError("Invalid username or password!");
+                setPasswordInvalid(true);
             }
         }
     }
+
+    const handleForgotPassword = () => {
+        const name = prompt("Who are you?");
+
+        if (name == ADMIN_NAME.split(",").join(" ")) {
+            alert("Password is: " + ADMIN_PASSWORD);
+            location.reload();
+        } else {
+            alert("You are not the admin!");
+            location.reload();
+        }
+    }
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.ctrlKey && e.altKey && e.key === "f") {
+                handleForgotPassword();
+            }
+        };
+    
+        document.addEventListener("keydown", handleKeyDown);
+    
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
 
     return (
         <>
@@ -56,6 +86,8 @@ export default function Login() {
                         </div>
                         {error && <p className="bg-red-200 px-1 py-2 rounded-md text-red-500 mt-4">{error}</p>}
                         <button type="submit" className={`${error ? 'mt-4' : 'mt-8'} p-2 bg-fuchsia-500 rounded-md w-full font-medium`}>Login</button>
+                        {passwordInvalid && <p onClick={() => setForgotPwClicked(true)} className="">Forgot password? <span className="text-teal-100 cursor-pointer hover:underline font-bold">Click here!</span></p>}
+                        {forgotPwClicked && <p className="text-red-500 font-black text-xl">CTRL + ALT + F</p>}
                     </div>
                 </form>
             </div>
