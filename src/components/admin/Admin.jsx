@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { LuMessageCircleMore } from "react-icons/lu";
+import { FiLogOut } from "react-icons/fi";
 import plusIcon from "../../assets/icons/plus_icon.png";
 import homeIcon from "../../assets/icons/home_icon.png";
 import projectIcon from "../../assets/icons/project_icon.png";
+import Login from "./auth/login/Login";
 import Dashboard from "./dashboard/Dashboard";
 import ProjectManagement from "./project_management/ProjectManagement";
 import Message from "./message/Message";
@@ -17,12 +19,9 @@ export default function Admin() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState("dashboard");
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(
+  const [isLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
-
-  const ADMIN_USERNAME = import.meta.env.VITE_ADMIN_USERNAME;
-  const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
   useEffect(() => {
     document.title = `Admin - ${menuItems.find((item) => item.id === selectedTab)?.label}`;
@@ -36,24 +35,11 @@ export default function Admin() {
         setIsMobile(false);
       }
     });
+
     if (window.innerWidth <= 750) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
-    }
-
-    if (!isLoggedIn) {
-      const username = prompt("Username:");
-      const password = prompt("Password:");
-
-      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        setIsLoggedIn(true);
-        localStorage.setItem("isLoggedIn", "true");
-      } else {
-        setIsLoggedIn(false);
-        localStorage.removeItem("isLoggedIn");
-        alert("Login failed!");
-      }
     }
   }, []);
   
@@ -62,7 +48,12 @@ export default function Admin() {
     setIsOpen(false);
   }
 
-  if (!isLoggedIn) return <h1 className="text-center mt-10 text-2xl font-bold">Access Denied</h1>;
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    location.reload();
+  }
+
+  if (!isLoggedIn) return <Login />;
 
   return (
       isMobile ? (
@@ -94,6 +85,7 @@ export default function Admin() {
                 {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
                 </div>
               ))}
+              <FiLogOut />
             </div>
           </div>
     
@@ -132,6 +124,10 @@ export default function Admin() {
                 {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
                 </div>
               ))}
+              <div onClick={handleLogout} className="cursor-pointer hover:bg-red-500 gap-1 mt-2 p-1 rounded-md flex items-center transition-all duration-100">
+                <FiLogOut className="text-slate-100 text-3xl"/>
+                {isOpen && <p className="text-slate-100 font-bold text-lg">Sign Out</p>}
+              </div>
             </div>
           </div>
     
