@@ -61,7 +61,7 @@ export default function Dashboard() {
 
     const getMonthlyVisitors = async () => {
         try {
-            const response = await axios.get(`${URL}/visitors/month`);
+            const response = await axios.get(`${URL}/visitors/last-month`);
             setMonthlyVisitors(response.data.length);
         } catch (e) {
             console.error(e.message);
