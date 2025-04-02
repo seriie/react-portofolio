@@ -50,7 +50,7 @@ export default function CursorCustom() {
         <>
             <div className='cursor hidden'>
                 <div className={`dot ${isTriggered ? 'hidden' : 'block'} absolute top-[50%] left-[50%] pointer-events-none translate-x-[-50%] translate-y-[-50%] z-[1000] transition-none ${theme === "dark" ? 'bg-green-500' : 'bg-sky-500'} p-[3px] rounded-full`}></div>
-                <div className={`circle absolute top-[50%] left-[50%] pointer-events-none translate-x-[-50%] translate-y-[-50%] z-[1000] transition-all duration-[30ms] ease-linear ${isTriggered ? `p-[30px] ${theme === "dark" ? 'bg-green-500' : 'bg-sky-500'} opacity-[.5]` : `p-[15px] border-solid ${theme === "dark" ? 'border-green-500' : 'border-sky-500'} border-2`} rounded-full`}></div>
+                <div className={`circle absolute top-[50%] left-[50%] pointer-events-none translate-x-[-50%] translate-y-[-50%] z-[1000] transition-all duration-75 ease-linear ${isTriggered ? `p-[30px] ${theme === "dark" ? 'bg-green-500' : 'bg-sky-500'} opacity-[.5]` : `p-[15px] border-solid ${theme === "dark" ? 'border-green-500' : 'border-sky-500'} border-2`} rounded-full`}></div>
             </div>
         </>
     )
