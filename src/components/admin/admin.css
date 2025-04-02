@@ -1,0 +1,8 @@
+.mobile-header::-webkit-scrollbar {
+    background-color: #00d5be;
+}
+
+.mobile-header::-webkit-scrollbar-thumb {
+    background-color: #009689;
+    border-radius: 10px;
+}

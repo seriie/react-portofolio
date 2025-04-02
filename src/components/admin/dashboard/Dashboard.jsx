@@ -36,7 +36,7 @@ export default function Dashboard() {
     
     const countItem = [
         { id: 1, name: 'Total Visitor', count: totalVisitors, icon: FaUser, backGround: "bg-sky-500" },
-        { id: 2, name: 'Monthly Visitors', count: monthlyVisitors, icon: FaUser, backGround: "bg-fuchsia-500" },
+        { id: 2, name: 'Last Month Visitors', count: monthlyVisitors, icon: FaUser, backGround: "bg-fuchsia-500" },
         { id: 3, name: 'Today Visitor', count: todayVisitors, icon: FaUser, backGround: "bg-teal-500" },
         { id: 4, name: 'Form Submitted', count: totalSubmitted, icon: CiViewList, backGround: "bg-yellow-500" },
     ];

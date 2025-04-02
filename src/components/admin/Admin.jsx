@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FiLogOut } from "react-icons/fi";
+import './admin.css'
 import plusIcon from "../../assets/icons/plus_icon.png";
 import homeIcon from "../../assets/icons/home_icon.png";
 import projectIcon from "../../assets/icons/project_icon.png";
@@ -61,7 +62,7 @@ export default function Admin() {
           <div
             className={`${
               isOpen ? "h-52" : "h-12"
-            } z-10 transition-all duration-300 overflow-hidden absolute flex flex-col top-0 right-0 left-0 W-full bg-teal-500 shadow-lg shadow-teal-500/50`}
+            } z-10 mobile-header transition-all duration-300 overflow-auto absolute flex flex-col top-0 right-0 left-0 W-full bg-teal-500 shadow-lg shadow-teal-500/50`}
           >
             <img
               onClick={() => setIsOpen((prev) => !prev)}
@@ -85,7 +86,10 @@ export default function Admin() {
                 {isOpen && <p className="text-slate-100 font-bold text-lg">{label}</p>}
                 </div>
               ))}
-              <FiLogOut />
+              <div onClick={handleLogout} className="cursor-pointer hover:bg-red-500 gap-1 mt-2 p-1 rounded-md flex items-center transition-all duration-100">
+                <FiLogOut className="text-slate-100 text-3xl"/>
+                {isOpen && <p className="text-slate-100 font-bold text-lg">Sign Out</p>}
+              </div>
             </div>
           </div>
     
