@@ -108,8 +108,8 @@ export default function Admin() {
           >
             <img
               onClick={() => setIsOpen((prev) => !prev)}
-              className={`cursor-pointer w-8 h-8 mt-2 transform transition-all duration-300 ${
-                isOpen ? "rotate-45 ml-auto mr-2" : "rotate-0 ml-auto mr-2"
+              className={`cursor-pointer ml-auto mr-2 w-8 h-8 mt-2 transform transition-all duration-300 ${
+                isOpen ? "rotate-45" : "rotate-0"
               }`}
               src={plusIcon}
               alt="Toggle Sidebar"

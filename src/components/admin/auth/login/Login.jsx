@@ -43,19 +43,7 @@ export default function Login() {
         }
     }
 
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.ctrlKey && e.altKey && e.key === "f") {
-                handleForgotPassword();
-            }
-        };
-    
-        document.addEventListener("keydown", handleKeyDown);
-    
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, []);
+    forgotPwClicked && handleForgotPassword();
 
     return (
         <>
@@ -87,7 +75,6 @@ export default function Login() {
                         {error && <p className="bg-red-200 px-1 py-2 rounded-md text-red-500 mt-4">{error}</p>}
                         <button type="submit" className={`${error ? 'mt-4' : 'mt-8'} p-2 bg-fuchsia-500 rounded-md w-full font-medium`}>Login</button>
                         {passwordInvalid && <p onClick={() => setForgotPwClicked(true)} className="">Forgot password? <span className="text-teal-100 cursor-pointer hover:underline font-bold">Click here!</span></p>}
-                        {forgotPwClicked && <p className="text-red-500 font-black text-xl">CTRL + ALT + F</p>}
                     </div>
                 </form>
             </div>
