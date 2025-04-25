@@ -3,6 +3,13 @@
 @tailwind utilities;
 @tailwind variants;
 
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

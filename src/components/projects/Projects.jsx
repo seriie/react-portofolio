@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
+import MySwiper from '../template/MySwiper';
 import axios from 'axios';
 
 export default function Projects() {
@@ -12,12 +13,11 @@ export default function Projects() {
   const getProjects = async () => {
     try {
       const response = await axios.get(`${URL}/projects`);
-
       setProjects(response.data);
     } catch (e) {
       console.error(e.message);
     }
-  }
+  };
 
   useEffect(() => {
     getProjects();
@@ -31,55 +31,24 @@ export default function Projects() {
 
   return (
     <section
-      className={`py-16 px-6 ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-300'}`}
+      className={`py-20 px-6 transition-all duration-500 ${
+        theme === 'dark' ? 'bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-b from-slate-100 via-slate-200 to-slate-100'
+      }`}
     >
-      <h2
-        className={`text-3xl md:text-4xl font-extrabold ${
-          theme === 'dark' ? 'text-slate-100' : 'text-slate-900'
-        } mb-8 text-center`}
-      >
-        {proj.title}
-      </h2>
+      <div className="max-w-7xl mx-auto">
+        <h2
+          className={`text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-14 transition-all duration-300 ${
+            theme === 'dark' ? 'text-white' : 'text-slate-900'
+          }`}
+        >
+          🚀 {proj.title}
+        </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className={`relative rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300`}
-            style={{
-              backgroundImage: `url(${project.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-
-            <div className="relative p-6 z-10 text-white">
-              <h3 className="text-xl font-bold mb-3">{project.name}</h3>
-              <p className="text-sm mb-4">{project.description}</p>
-
-              <div className="flex flex-wrap gap-1 mb-4">
-                {project.techstack.split(", ").map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-gradientToRight text-white text-xs px-2 py-1 rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link.startsWith("https") ? project.link : `https://${project.link}`}
-                className="text-teal-400 text-sm font-medium hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {proj.visit}
-              </a>
-            </div>
+        <div className="relative">
+          <div className="glass-bg p-2 rounded-2xl shadow-2xl">
+            <MySwiper projects={projects} />
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
