@@ -10,6 +10,28 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.glassy-card {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark .glassy-card {
+  background: rgba(30, 41, 59, 0.4); /* slate-800 semi transparan */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 0, 255, 0.8);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
