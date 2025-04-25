@@ -1,10 +1,14 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function MySwiper({ projects }) {
+  const formatUrl = (url) => {
+    return url.startsWith("https://") ? url : `https://${url}`;
+  }
+
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -29,7 +33,7 @@ export default function MySwiper({ projects }) {
 
             <div className="w-full md:w-1/2">
               <span className="bg-purple-600 text-white px-3 py-1 text-xs font-medium rounded-full inline-block mb-4 shadow-sm">
-                {project.category || 'Project'}
+                {project.category || "Project"}
               </span>
 
               <h3 className="text-3xl font-bold text-slate-800 dark:text-white mb-4 tracking-tight">
@@ -41,21 +45,19 @@ export default function MySwiper({ projects }) {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-6">
-  {project.techstack &&
-    project.techstack.split(', ').map((tech, idx) => (
-        <span
-        key={idx}
-        className="bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg hover:scale-105 transition-all duration-300 animate-glow"
-      >
-        {tech}
-      </span>
-      
-    ))}
-</div>
-
+                {project.techstack &&
+                  project.techstack.split(", ").map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg hover:scale-105 transition-all duration-300 animate-glow"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+              </div>
 
               <a
-                href={project.link}
+                href={formatUrl(project.link)}
                 className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-700 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all shadow-md hover:scale-105"
                 target="_blank"
                 rel="noopener noreferrer"
