@@ -76,7 +76,7 @@ export default function ProjectManagement() {
         <h2 className="text-3xl font-bold mb-6 text-center">Manage Projects</h2>
 
         <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg mb-6">
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 text-slate-800">
                 <Input className="flex-1 min-w-[200px]" type="text" name="name" placeholder="Project Name" onChange={handleChange} value={formData.name} required />
                 <Input className="flex-1 min-w-[200px]" type="text" name="image" placeholder="Image URL" onChange={handleChange} value={formData.image} />
                 <Input className="flex-1 min-w-[200px]" type="text" name="link" placeholder="Project Link" onChange={handleChange} value={formData.link} required />
