@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
