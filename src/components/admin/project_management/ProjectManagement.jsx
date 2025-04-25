@@ -82,7 +82,7 @@ export default function ProjectManagement() {
                 <Input className="flex-1 min-w-[200px]" type="text" name="link" placeholder="Project Link" onChange={handleChange} value={formData.link} required />
                 <Input className="flex-1 min-w-[200px]" type="text" name="techstack" placeholder="Tech Stack" onChange={handleChange} value={formData.techstack} required />
             </div>
-            <Textarea className="mt-4" name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
+            <Textarea className="mt-4 text-slate-800" name="description" placeholder="Project Description" onChange={handleChange} value={formData.description} required />
             <button 
                 className={`mt-4 w-full ${isUpdating ? 'bg-sky-400' : 'bg-sky-500'} p-2 rounded-lg hover:bg-sky-400 transition duration-200 text-white`} 
                 type="submit"
