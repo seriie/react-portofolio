@@ -17,19 +17,19 @@ export default function Header() {
     {
       id: 1,
       name: "GitHub",
-      icon: <FaGithub className="w-6 h-6" />,
+      icon: <FaGithub className="w-5 h-5" />,
       link: "https://github.com/seriie",
     },
     {
       id: 2,
       name: "Linkedin",
-      icon: <FaLinkedinIn className="w-6 h-6" />,
+      icon: <FaLinkedinIn className="w-5 h-5" />,
       link: "https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290",
     },
     {
       id: 3,
       name: "Gmail",
-      icon: <IoMdMail className="w-6 h-6" />,
+      icon: <IoMdMail className="w-5 h-5" />,
       link: "mailto:mohammadzidane058@gmail.com",
     },
   ];
@@ -47,26 +47,24 @@ export default function Header() {
 
   return (
     <div
-      className={`header-bg flex flex-col items-center justify-center min-h-screen px-6 transition-all ${
+      className={`flex flex-col items-center justify-center min-h-screen px-6 transition-all ${
         theme === "dark"
           ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white"
-          : "bg-gradient-to-b from-gray-100 to-white text-gray-900"
+          : "bg-gradient-to-b from-gray-50 to-white text-gray-900"
       }`}
     >
       <ChangeLang />
       <ThemeToggle />
 
       <div
-        className={`relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ${
-          theme === "dark"
-            ? "hover:shadow-customLight"
-            : "hover:shadow-customDark"
-        } hover:scale-110 transition-all`}
+        className={`relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 ${
+          theme === "dark" ? "border-blue-600" : "border-purple-500"
+        } shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-110`}
       >
         <img
           src={profile || defaultProfile}
           alt="Profile"
-          className="triggered-hover object-cover w-full h-full"
+          className="object-cover w-full h-full"
           onError={(e) => {
             e.target.onError = null;
             e.target.src = defaultProfile;
@@ -74,34 +72,34 @@ export default function Header() {
         />
       </div>
 
-      <h1 className="header-name mt-6 text-3xl md:text-5xl font-extrabold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+      <h1 className="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-pulse">
         {name}
       </h1>
 
-      <p className="header-text mt-4 text-sm md:text-lg text-center max-w-md leading-relaxed">
+      <p className="mt-4 text-sm md:text-lg text-center max-w-md leading-relaxed opacity-90">
         Web Developer specializing in{" "}
         <span className="font-semibold text-blue-400">ReactJS</span>,{" "}
         <span className="font-semibold text-teal-400">Tailwind CSS</span>, and
         modern web technologies.
       </p>
-      <div className="flex gap-4 mt-6">
+
+      <div className="flex gap-5 mt-6">
         {socialMedia.map((item) => (
-          <div key={item.id}>
-            <a
-              href={item.link}
-              target="_blank"
-              className={`triggered-hover group ${theme === "dark" ? 'focus:outline-green-500' : 'focus:outline-sky-500'} focus:rounded-full`}
+          <a
+            key={item.id}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative"
+          >
+            <div
+              className={`w-11 h-11 flex items-center justify-center rounded-full shadow-md ${
+                theme === "dark" ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-800"
+              } group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300 transform group-hover:scale-110`}
             >
-              <span className="sr-only">{item.name}</span>
-              <div
-                className={`w-10 h-10 flex items-center justify-center rounded-full ${
-                  theme === "dark" ? "bg-slate-700 text-slate-300" : "bg-slate-300 text-slate-700"
-                } group-hover:bg-blue-500 transition duration-300`}
-              >
-                {item.icon}
-              </div>
-            </a>
-          </div>
+              {item.icon}
+            </div>
+          </a>
         ))}
       </div>
     </div>
