@@ -11,24 +11,25 @@ export default function Header() {
   const getProfileUrl = (index) => {
     return `https://raw.githubusercontent.com/seriie/porto-profile-img/refs/heads/main/profile/ryo-${index}.png`;
   };
+  const { theme } = useTheme();
 
   const socialMedia = [
     {
       id: 1,
       name: "GitHub",
-      icon: <FaGithub className="w-6 h-6 text-slate-300" />,
+      icon: <FaGithub className="w-6 h-6" />,
       link: "https://github.com/seriie",
     },
     {
       id: 2,
       name: "Linkedin",
-      icon: <FaLinkedinIn className="w-6 h-6 text-slate-300" />,
+      icon: <FaLinkedinIn className="w-6 h-6" />,
       link: "https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290",
     },
     {
       id: 3,
       name: "Gmail",
-      icon: <IoMdMail className="w-6 h-6 text-slate-300" />,
+      icon: <IoMdMail className="w-6 h-6" />,
       link: "mailto:mohammadzidane058@gmail.com",
     },
   ];
@@ -42,7 +43,6 @@ export default function Header() {
     handleSetProfile();
   }, []);
 
-  const { theme } = useTheme();
   const name = "Zzzeeee05";
 
   return (
@@ -90,15 +90,15 @@ export default function Header() {
             <a
               href={item.link}
               target="_blank"
-              className="triggered-hover group"
+              className={`triggered-hover group ${theme === "dark" ? 'focus:outline-green-500' : 'focus:outline-sky-500'} focus:rounded-full`}
             >
               <span className="sr-only">{item.name}</span>
               <div
                 className={`w-10 h-10 flex items-center justify-center rounded-full ${
-                  theme === "dark" ? "bg-slate-700" : "bg-slate-300"
+                  theme === "dark" ? "bg-slate-700 text-slate-300" : "bg-slate-300 text-slate-700"
                 } group-hover:bg-blue-500 transition duration-300`}
               >
-                <div className="">{item.icon}</div>
+                {item.icon}
               </div>
             </a>
           </div>
