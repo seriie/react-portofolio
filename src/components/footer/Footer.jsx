@@ -2,45 +2,52 @@ import { useTheme } from "../../context/ThemeContext";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function Footer() {
-    const { translations } = useLanguage();
-    const { theme } = useTheme();
+  const { translations } = useLanguage();
+  const { theme } = useTheme();
 
-    if(!translations) {
-        return <p>Loading...</p>;
-    }
+  if (!translations) {
+    return <p>Loading...</p>;
+  }
 
-    const { support } = translations;
-    return (
-      <footer className={`${theme === "dark" ? 'bg-slate-900 text-slate-50' : 'bg-slate-300 text-slate-900'} py-8`}>
-          <div className="container mx-auto text-center">
-            <div className="flex justify-center mb-8 space-x-10">
-              <a href="https://github.com/seriie" target="_blank" className={`triggered-hover ${theme === "dark" ? 'text-slate-400 hover:text-slate-300' : 'text-slate-700 hover:text-slate-900'}`}>
-                <i className="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/" target="_blank" className={`triggered-hover ${theme === "dark" ? 'text-slate-400 hover:text-slate-300' : 'text-slate-700 hover:text-slate-900'}`}>
-                <i className="fab fa-linkedin"></i> LinkedIn
-              </a>
-              <a href="https://www.instagram.com/zzzeeee05" target="_blank" className={`triggered-hover ${theme === "dark" ? 'text-slate-400 hover:text-slate-300' : 'text-slate-700 hover:text-slate-900'}`}>
-                <i className="fab fa-instagram"></i> Instagram
-              </a>
-            </div>
+  const { support } = translations;
 
-            <p className="text-lg mb-4">{support.title}</p>
-            <div className="flex justify-center mb-8 space-x-10">
-            <a 
-              href="https://ko-fi.com/justacoders" 
-              target="_blank" 
-              className={`${theme === "dark" ? 'text-slate-400 hover:text-slate-300' : 'text-slate-700 hover:text-slate-900'} flex items-center`}
+  return (
+    <footer className={`${theme === "dark" ? 'bg-gradient-to-t from-slate-900 to-slate-800 text-slate-100' : 'bg-gradient-to-t from-slate-200 to-slate-100 text-slate-900'} py-10`}>
+      <div className="container mx-auto flex flex-col items-center text-center space-y-8">
+        <div className="flex justify-center space-x-8">
+          {[
+            { href: "https://github.com/seriie", icon: "fab fa-github", label: "GitHub" },
+            { href: "https://www.linkedin.com/in/mohammad-zidane-rahadian-0b2815290/", icon: "fab fa-linkedin", label: "LinkedIn" },
+            { href: "https://www.instagram.com/zzzeeee05", icon: "fab fa-instagram", label: "Instagram" },
+          ].map((item, idx) => (
+            <a
+              key={idx}
+              href={item.href}
+              target="_blank"
+              className="text-2xl transition-colors duration-300 hover:text-teal-400"
             >
-              <i className="triggered-hover fas fa-coffee mr-2"></i> 
-              {support.link}
+              <i className={`${item.icon}`}></i> <span className="text-sm ml-2">{item.label}</span>
             </a>
-            </div>
+          ))}
+        </div>
 
-            <div className={`text-sm ${theme === "dark" ? 'text-slate-400' : 'text-slate-700'}`}>
-              <p>&copy; {new Date().getFullYear()} Zee. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-    );
+        <div className="text-lg">
+          <p>{support.title}</p>
+        </div>
+
+        <a
+          href="https://ko-fi.com/justacoders"
+          target="_blank"
+          className="flex items-center space-x-2 text-teal-500 hover:text-teal-400 transition-colors duration-300"
+        >
+          <i className="fas fa-coffee"></i> 
+          <span className="text-base">{support.link}</span>
+        </a>
+
+        <div className="text-xs text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Zee. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
 }
