@@ -102,6 +102,9 @@ export default function Header() {
           </a>
         ))}
       </div>
+      <a href='/resume/Mohammad-Zidane-Rahadian.pdf' download className={`relative triggered-hover mt-10 rounded-full border-2 ${theme === "dark" ? 'border-slate-100 text-slate-100 hover:bg-teal-500 hover:border-teal-500 hover:shadow-teal-500' : 'border-slate-800 text-slate-800 hover:bg-sky-500 hover:border-sky-500 hover:shadow-sky-500 hover:text-slate-100'} shadow-md shadow-slate-500 hover:scale-[1.1] transition-all duration-200 p-4 font-bold text-xl`}>
+        <button>Download CV</button>
+      </a>
     </div>
   );
 }
