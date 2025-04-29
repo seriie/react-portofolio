@@ -32,11 +32,13 @@ export default function Contact() {
         setError("");
         setSuccess(true);
         console.log("Form submitted successfully!");
-        event.target.reset(); // reset formnya biar ngga reload page
+        event.target.reset();
       }
     } catch (error) {
       console.error("Error:", error);
-      setError(error.response?.data?.message || error.message || "Unknown error");
+      setError(
+        error.response?.data?.message || error.message || "Unknown error"
+      );
     }
   };
 
@@ -81,7 +83,9 @@ export default function Contact() {
             name="name"
             required
             className={`w-full px-4 py-3 rounded-lg ${
-              theme === "dark" ? "bg-slate-800 text-slate-300" : "bg-white text-slate-900"
+              theme === "dark"
+                ? "bg-slate-800 text-slate-300"
+                : "bg-white text-slate-900"
             } focus:outline-none focus:ring-2 focus:ring-teal-400`}
           />
         </div>
@@ -101,7 +105,9 @@ export default function Contact() {
             name="email"
             required
             className={`w-full px-4 py-3 rounded-lg ${
-              theme === "dark" ? "bg-slate-800 text-slate-300" : "bg-white text-slate-900"
+              theme === "dark"
+                ? "bg-slate-800 text-slate-300"
+                : "bg-white text-slate-900"
             } focus:outline-none focus:ring-2 focus:ring-teal-400`}
           />
         </div>
@@ -121,7 +127,9 @@ export default function Contact() {
             rows="5"
             required
             className={`w-full px-4 py-3 rounded-lg ${
-              theme === "dark" ? "bg-slate-800 text-slate-300" : "bg-white text-slate-900"
+              theme === "dark"
+                ? "bg-slate-800 text-slate-300"
+                : "bg-white text-slate-900"
             } focus:outline-none focus:ring-2 focus:ring-teal-400`}
           />
         </div>
@@ -139,7 +147,9 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="w-full bg-teal-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
+          className={`w-full ${
+            theme === "dark" ? "bg-teal-500" : "bg-sky-500"
+          } text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400`}
         >
           {contact.send}
         </button>

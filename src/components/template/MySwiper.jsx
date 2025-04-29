@@ -33,7 +33,7 @@ export default function MySwiper({ projects }) {
 
             <div className="w-full md:w-1/2">
               <span className="bg-purple-600 text-white px-3 py-1 text-xs font-medium rounded-full inline-block mb-4 shadow-sm">
-                {project.category || "Project"}
+                {project.type || "Project"}
               </span>
 
               <h3 className="text-3xl font-bold text-slate-800 dark:text-white mb-4 tracking-tight">
