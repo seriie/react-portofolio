@@ -1,13 +1,16 @@
 import { useLanguage } from "../../context/LanguageContext";
 import { useTheme } from "../../context/ThemeContext";
-import { motion } from "framer-motion"; // Biar makin hidup skill card-nya
+import { motion } from "framer-motion";
 
 const skills = [
   { name: "ReactJS", color: "bg-blue-500", icon: "⚛️" },
+  { name: "Next.js", color: "bg-black", icon: "⏭️" },
   { name: "Tailwind CSS", color: "bg-teal-500", icon: "💨" },
-  { name: "MySQL", color: "bg-yellow-500", icon: "🛢️" },
   { name: "JavaScript", color: "bg-yellow-400", icon: "📜" },
   { name: "API Development", color: "bg-indigo-500", icon: "🔗" },
+  { name: "Express.js", color: "bg-green-600", icon: "🚂" },
+  { name: "PHP", color: "bg-purple-600", icon: "🐘" },
+  { name: "MySQL", color: "bg-yellow-500", icon: "🛢️" },
   { name: "Git & GitHub", color: "bg-gray-700", icon: "🐙" },
 ];
 
