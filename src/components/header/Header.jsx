@@ -58,7 +58,7 @@ export default function Header() {
 
       <div
         className={`relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 ${
-          theme === "dark" ? "border-blue-600" : "border-purple-500"
+          theme === "dark" ? "border-blue-600 hover:shadow-slate-600" : "border-purple-500"
         } shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-110`}
       >
         <img
