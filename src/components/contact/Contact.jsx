@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useLanguage } from "../../context/LanguageContext";
 import { useTheme } from "../../context/ThemeContext";
-import { motion } from "framer-motion"; // Tambahan kecil buat animasi smooth
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [error, setError] = useState("");
