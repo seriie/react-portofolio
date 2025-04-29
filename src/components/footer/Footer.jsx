@@ -38,10 +38,10 @@ export default function Footer() {
         <a
           href="https://ko-fi.com/justacoders"
           target="_blank"
-          className="flex items-center space-x-2 text-teal-500 hover:text-teal-400 transition-colors duration-300"
+          className={`flex items-center space-x-2 ${theme === "dark" ? 'text-teal-500 hover:text-teal-400' : 'text-sky-500 hover:text-sky-400'} transition-colors duration-300`}
         >
           <i className="fas fa-coffee"></i> 
-          <span className="text-base">{support.link}</span>
+          <span className={`text-base ${theme === "dark" ? 'text-teal-500' : 'text-sky-500'}`}>{support.link}</span>
         </a>
 
         <div className="text-xs text-slate-500">

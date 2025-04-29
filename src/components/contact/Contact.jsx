@@ -148,8 +148,8 @@ export default function Contact() {
         <button
           type="submit"
           className={`w-full ${
-            theme === "dark" ? "bg-teal-500" : "bg-sky-500"
-          } text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400`}
+            theme === "dark" ? "bg-teal-500 hover:bg-teal-600" : "bg-sky-500 hover:bg-sky-600"
+          } text-white py-3 px-4 rounded-lg font-semibold transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400`}
         >
           {contact.send}
         </button>
