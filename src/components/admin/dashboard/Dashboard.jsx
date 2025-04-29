@@ -104,6 +104,37 @@ export default function Dashboard() {
         return () => clearInterval(interval);
     }, []);
 
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: "#333", // biar gelap terang bisa kebaca
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: "#333"
+            },
+            grid: {
+              color: "#eee"
+            }
+          },
+          y: {
+            ticks: {
+              color: "#333"
+            },
+            grid: {
+              color: "#eee"
+            }
+          }
+        }
+      };
+      
+
     const chartData = {
         labels: visitors.map((data) => data.date.slice(0,10)),
         datasets: [
@@ -137,9 +168,9 @@ export default function Dashboard() {
           </div>
         
           <div className="bg-white p-6 rounded-lg shadow-md w-full">
-            <h2 className="text-xl font-bold mb-4">Visitor Statistics</h2>
+            <h2 className="text-xl font-bold mb-4 text-slate-800">Visitor Statistics</h2>
             <div className="w-full h-96">
-              <Line data={chartData} />
+              <Line data={chartData} options={chartOptions} />
             </div>
           </div>
         </div>
