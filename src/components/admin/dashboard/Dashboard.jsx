@@ -110,7 +110,7 @@ export default function Dashboard() {
         plugins: {
           legend: {
             labels: {
-              color: "#333", // biar gelap terang bisa kebaca
+              color: "#333",
             }
           }
         },
