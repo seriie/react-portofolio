@@ -3,15 +3,15 @@ import { useTheme } from "../../context/ThemeContext";
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "ReactJS", icon: "⚛️", gradient: "from-blue-400" },
-  { name: "Next.js", icon: "⏭️", gradient: "from-neutral-800" },
-  { name: "Tailwind CSS", icon: "💨", gradient: "from-teal-400" },
-  { name: "JavaScript", icon: "📜", gradient: "from-yellow-300" },
-  { name: "API Development", icon: "🔗", gradient: "from-indigo-400" },
-  { name: "Express.js", icon: "🚂", gradient: "from-green-500" },
-  { name: "PHP", icon: "🐘", gradient: "from-purple-500" },
-  { name: "MySQL", icon: "🛢️", gradient: "from-amber-500" },
-  { name: "Git & GitHub", icon: "🐙", gradient: "from-gray-600" },
+  { name: "ReactJS", icon: "⚛️", background: "bg-blue-400" },
+  { name: "Next.js", icon: "⏭️", background: "bg-neutral-800" },
+  { name: "Tailwind CSS", icon: "💨", background: "bg-teal-400" },
+  { name: "JavaScript", icon: "📜", background: "bg-yellow-300" },
+  { name: "API Development", icon: "🔗", background: "bg-indigo-400" },
+  { name: "Express.js", icon: "🚂", background: "bg-green-500" },
+  { name: "PHP", icon: "🐘", background: "bg-purple-500" },
+  { name: "MySQL", icon: "🛢️", background: "bg-amber-500" },
+  { name: "Git & GitHub", icon: "🐙", background: "bg-gray-600" },
 ];
 
 
@@ -46,8 +46,7 @@ export default function Skills() {
             transition={{ duration: 0.01, delay: 0.01 }}
             className={`
               flex flex-col items-center justify-center p-6 rounded-xl 
-              bg-gradient-to-r ${skill.gradient} to-transparent
-              backdrop-blur-md border border-white/20
+              bg-gradient-to-r ${skill.background} border border-white/20
               shadow-md hover:shadow-lg
               transition-all duration-300
             `}
