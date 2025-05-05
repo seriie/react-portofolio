@@ -46,7 +46,7 @@ export default function Skills() {
             transition={{ duration: 0.01, delay: 0.01 }}
             className={`
               flex flex-col items-center justify-center p-6 rounded-xl 
-              bg-gradient-to-r ${skill.background} border border-white/20
+              bg-gradient-to-r ${skill.background} border
               shadow-md hover:shadow-lg
               transition-all duration-300
             `}
