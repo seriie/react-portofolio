@@ -75,10 +75,11 @@ export default function Header() {
       </h1>
 
       <p className="mt-4 text-sm md:text-lg text-center max-w-md leading-relaxed opacity-90">
-        Web Developer specializing in{" "}
-        <span className="font-semibold text-blue-400">ReactJS</span>,{" "}
-        <span className="font-semibold text-teal-400">Tailwind CSS</span>, and
-        modern web technologies.
+        Fullstack Developer with a passion for building{" "}
+        <span className="font-semibold text-blue-400">clean</span>,{" "}
+        <span className="font-semibold text-teal-400">modern</span>, and{" "}
+        <span className="font-semibold text-pink-400">high-performance</span>{" "}
+        web applications using the latest tech stacks.
       </p>
 
       <div className="flex gap-5 mt-6">
