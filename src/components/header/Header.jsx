@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
+import { FaDiscord } from "react-icons/fa";
 import defaultProfile from "../../assets/image/profile-2.png";
 import ChangeLang from "../change_lang/ChangeLang";
 import ThemeToggle from "../theme_toggle/ThemeToggle";
@@ -34,6 +35,12 @@ export default function Header() {
       icon: <IoMdMail className="w-5 h-5" />,
       link: "mailto:mohammadzidane058@gmail.com",
     },
+    {
+      id: 4,
+      name: "Discord",
+      icon: <FaDiscord className="w-5 h-5" />,
+      link: "https://discord.com/users/973507863811063828",
+    }
   ];
 
   useEffect(() => {
